@@ -219,7 +219,9 @@ var $=function(i){return document.getElementById(i)};
 var boxes=document.querySelectorAll('#opts input');
 
 // תמונה שלא נטענה מוסתרת, כדי שלא יופיע ריבוע ריק
-document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName=='IMG'){var p=t.closest('.cv,.ph')||(t.parentNode.children.length==1?t.parentNode:t);p.classList.add('noimg')}},true);
+function noimg(t){var p=t.closest('.cv,.ph')||(t.parentNode.children.length==1?t.parentNode:t);p.classList.add('noimg')}
+document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName=='IMG')noimg(t)},true);
+document.querySelectorAll('img').forEach(function(i){if(i.complete&&!i.naturalWidth)noimg(i)});
 
 function h(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function fmt(m){if(m==15)return'רבע שעה';var hh=Math.floor(m/60),r=m%60,t=hh==1?'שעה':hh==2?'שעתיים':hh+' שעות';return r?(hh?t+' ו־'+r+' דקות':r+' דקות'):t}
