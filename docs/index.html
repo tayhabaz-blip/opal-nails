@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nail Studio by Opal Ben Moha | ציפורניים ברמלה, קביעת תור אונליין</title><meta name="description" content="סטודיו לציפורניים ברמלה: מניקור לק ג׳ל, בנייה בג׳ל, בנייה בטיפס הפוך ופדיקור ללא סכין. קביעת תור אונליין לפי שעות פנויות. חניה גדולה ממול."><meta name="theme-color" content="#fff2f6"><meta property="og:title" content="Nail Studio by Opal Ben Moha, ציפורניים ברמלה"><meta property="og:description" content="קביעת תור אונליין לפי שעות פנויות">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;700&display=swap">
+<style>
+:root{--bg:#fff2f6;--surface:#fff;--ink:#2b1d22;--muted:#86666f;--rose:#e0709a;--rose2:#f7c4d4;--gold:#cf9f6e;--line:#f8dce6;--glow:rgba(236,130,166,.28);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+:root[data-theme="dark"]{--bg:#1a1114;--surface:#251a1e;--ink:#f6e9e6;--muted:#b49ca1;--rose:#e08aa1;--rose2:#8c4a5c;--gold:#d9ae7c;--line:#3a2a30;--glow:rgba(224,138,161,.22)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Heebo',Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Frank Ruhl Libre',Georgia,serif;margin:0}
+.hero{position:relative;min-height:86vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.7;animation:drift 14s ease-in-out infinite alternate}
+.b1{width:340px;height:340px;background:var(--rose2);top:-80px;right:-80px}
+.b2{width:300px;height:300px;background:var(--gold);opacity:.35;bottom:-60px;left:-70px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(30px,40px) scale(1.12)}}
+.nail{position:absolute;width:34px;height:58px;border-radius:17px 17px 8px 8px;background:linear-gradient(160deg,#fff8,var(--rose2));border:1px solid #fff6;box-shadow:0 8px 24px var(--glow);animation:float 6s ease-in-out infinite}
+.n1{top:16%;left:12%;transform:rotate(-18deg)}.n2{top:62%;right:10%;transform:rotate(14deg);animation-delay:-2s;height:70px}.n3{bottom:12%;left:26%;transform:rotate(8deg);animation-delay:-4s;width:26px;height:46px}
+@keyframes float{50%{translate:0 -16px}}
+.hero>*:not(.blob):not(.nail){position:relative;z-index:2}
+.eyebrow{letter-spacing:.35em;font-size:.8rem;color:var(--gold);font-weight:500}
+.hero h1{font-size:clamp(2.6rem,11vw,5.2rem);font-weight:900;line-height:1.05;margin:14px 0 16px}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--rose),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:460px;color:var(--muted);font-size:1.08rem;margin:0 0 30px;font-weight:300}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:500;color:#fff;background:linear-gradient(120deg,#ee8fb0,#d6648c);padding:15px 38px;border-radius:999px;text-decoration:none;box-shadow:0 10px 28px var(--glow);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+section{max-width:760px;margin:0 auto;padding:64px 20px}
+.sec-h{text-align:center;margin-bottom:34px}
+.sec-h small{color:var(--gold);letter-spacing:.3em;font-size:.75rem}
+.sec-h h2{font-size:clamp(1.9rem,7vw,2.7rem);margin-top:6px}
+.sec-h p{color:var(--muted);margin:8px 0 0;font-weight:300}
+.opts{display:grid;gap:12px}
+.opt{position:relative;display:flex;align-items:center;gap:16px;background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:18px 20px;cursor:pointer;transition:.25s;user-select:none}
+.opt:hover{border-color:var(--rose2);transform:translateY(-2px)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.ic{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:linear-gradient(140deg,var(--rose2),transparent);border:1px solid var(--line)}
+.opt b{display:block;font-weight:500;font-size:1.05rem}
+.opt span.d{color:var(--muted);font-size:.88rem;font-weight:300}
+.tick{margin-inline-start:auto;flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;color:transparent;transition:.25s}
+.opt:has(input:checked){border-color:var(--rose);background:linear-gradient(120deg,var(--surface),var(--glow));box-shadow:0 8px 24px var(--glow)}
+.opt:has(input:checked) .tick{background:var(--rose);border-color:var(--rose);color:#fff;transform:scale(1.1)}
+.opt:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:2px}
+.sum{margin-top:18px;text-align:center;color:var(--muted);min-height:1.6em}
+.sum strong{color:var(--rose)}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px 22px;display:grid;gap:16px;margin-top:34px;box-shadow:0 18px 50px var(--glow)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:.88rem;color:var(--muted)}
+input[type=text],input[type=tel],input[type=date],input[type=time],textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--rose)}
+textarea{resize:vertical;min-height:70px}
+.err{color:#d2456b;text-align:center;font-size:.9rem;min-height:1.3em}
+.form .btn{width:100%;font-size:1.05rem}
+footer{text-align:center;color:var(--muted);padding:30px 20px 50px;font-size:.85rem;font-weight:300}
+.reveal{opacity:0;transform:translateY(20px);transition:.8s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+.pr{display:block;color:var(--rose);font-weight:500;font-size:.88rem;margin-top:2px}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:9px}
+.slot{font:inherit;cursor:pointer;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:10px 0;transition:.2s}
+.slot:hover{border-color:var(--rose2)}
+.slot.on{background:var(--rose);border-color:var(--rose);color:#fff;box-shadow:0 6px 16px var(--glow)}
+.hint{color:var(--muted);text-align:center;font-size:.92rem;padding:8px}
+.ok{text-align:center;padding:30px 10px}.ok h3{font-size:1.8rem;color:var(--rose);margin-bottom:8px}
+.adm{margin-top:40px;border-top:1px dashed var(--line);padding-top:26px}
+.bk{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-top:10px;font-size:.92rem}
+.bk b{color:var(--rose)}.bk button{float:left;font:inherit;font-size:.85rem;border:1px solid var(--line);background:none;color:var(--muted);border-radius:12px;padding:10px 14px;cursor:pointer;touch-action:manipulation}
+.loc{max-width:760px;margin:0 auto;padding:0 20px 20px}.loc .card{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:28px 22px;text-align:center;box-shadow:0 18px 50px var(--glow)}.loc h2{font-size:1.9rem;margin:6px 0 10px}.loc p{margin:4px 0;color:var(--muted)}.loc p strong{color:var(--ink);font-weight:500;font-size:1.1rem}.loc .btn{margin-top:18px}[hidden]{display:none!important}.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}@media(min-width:640px){.gal{grid-template-columns:repeat(3,1fr)}}.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px;border:1px solid var(--line);box-shadow:0 10px 30px var(--glow)}.rm{color:var(--rose);font-weight:500;text-decoration:none;display:inline-block;margin-top:6px}.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;padding:18px 20px;color:var(--muted);font-size:.92rem;border-block:1px solid var(--line);background:var(--surface)}.trust span::before{content:'✦';color:var(--rose);margin-inline-end:8px}details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin-bottom:10px}summary{cursor:pointer;font-weight:500}details p{color:var(--muted);margin:8px 0 0}.sticky{position:fixed;inset-inline:18px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;text-align:center;opacity:0;pointer-events:none;transition:.3s;transform:translateY(20px)}.sticky.on{opacity:1;pointer-events:auto;transform:none}.loc .btn.s2{background:var(--surface);color:var(--rose);border:1.5px solid var(--rose2);box-shadow:none;margin:18px 4px 0}.logo{width:170px;height:auto;margin-bottom:8px}.ok .btn{margin:6px 4px 0}.btn.o{background:var(--surface);color:var(--rose);border:1.5px solid var(--rose2);box-shadow:none}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:14px;justify-content:flex-start}.tab{flex:none;font:inherit;cursor:pointer;background:var(--surface);color:var(--muted);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px}.tab.on{background:var(--rose);border-color:var(--rose);color:#fff}#galCat{font:inherit;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+input,select,textarea{font-size:16px}select{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px;max-width:100%}
+.hero{min-height:86vh;min-height:86svh}.btn,.slot,.bk button{min-height:44px}.slot{min-height:46px}
+a,button,label{-webkit-tap-highlight-color:transparent;touch-action:manipulation}html{-webkit-text-size-adjust:100%}
+footer{padding-bottom:100px}footer a{color:var(--rose)}
+@media(max-width:520px){.blob{filter:blur(46px)}section{padding:48px 16px}.nail{display:none}.logo{width:140px}}
+.tc{display:flex!important;grid-template-columns:none;align-items:flex-start;gap:10px;font-size:.9rem}.tc input{width:22px;height:22px;flex:none;margin:2px 0 0}.tc a{color:var(--rose)}
+body:not(.tm) #termsPg{display:none}body.tm>*:not(#termsPg):not(footer){display:none!important}
+.card2{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:12px}.card2 h3{font-size:1.2rem;color:var(--rose);margin-bottom:4px}.card2 p{margin:0;color:var(--muted)}
+.rv{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}.rv .card2{flex:0 0 82%;scroll-snap-align:center;margin:0}.rv .card2 p{color:var(--ink)}.rv small{display:block;margin-top:10px;color:var(--gold)}
+.adm details{margin-top:12px}.adm .g2{display:grid;gap:8px;grid-template-columns:1fr 1fr}.adm input,.adm select{width:100%}.hr{display:grid;grid-template-columns:70px 1fr 1fr 1fr;gap:6px;align-items:center;margin-top:6px}.adm .btn{padding:12px 20px;margin-top:10px;width:100%}.adm .x{font:inherit;border:1px solid var(--line);background:none;color:var(--muted);border-radius:12px;padding:8px 12px;margin-inline-end:6px}
+.ph{padding:0;overflow:hidden}.ph img{width:100%;height:100%;object-fit:cover;display:block}.stu{width:100%;max-height:300px;object-fit:cover;object-position:center 60%;border-radius:18px;margin-bottom:14px}
+
+/* wizard: מעבר בין שלבים בקביעת תור (אותם צבעים של האתר) */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 26px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0}
+.steps button{font:inherit;font-size:.95rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:8px 6px;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:16px;transition:.25s}
+.steps i{font-style:normal;flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;background:var(--bg);border:1px solid var(--line)}
+.steps button.done{border-color:var(--rose)}
+.steps button.done i{background:var(--rose);border-color:var(--rose);color:#fff}
+.steps button.on{background:var(--rose);border-color:var(--rose);color:#fff;box-shadow:0 8px 20px var(--glow)}
+.steps button.on i{background:#fff;color:var(--rose);border-color:#fff}
+.steps button.lock{opacity:.5}
+#book[data-s="2"]>.sec-h,#book[data-s="3"]>.sec-h,#book[data-s="2"] #opts,#book[data-s="3"] #opts{display:none}
+#book[data-s="1"] #f{display:none}
+#book[data-s="2"] .st3,#book[data-s="3"] .st2{display:none!important}
+#book:not([data-s="3"]) .rowN{display:none}
+#book[data-s="2"] #f:has(#slots button:not(.slot)) .rowN{display:grid}
+#book[data-s="2"] #f{margin-top:18px}#book[data-s="3"] #f{margin-top:18px}
+.nav{display:grid;gap:10px;margin-top:22px}
+.nav .btn{width:100%;font-size:1.05rem}
+.nav .btn[disabled]{opacity:.45;pointer-events:none}
+.nav .pv{font:inherit;cursor:pointer;background:none;border:1.5px solid var(--line);color:var(--muted);border-radius:999px;min-height:44px}
+#book[data-s="1"] #pv,#book[data-s="3"] #nx{display:none}
+#book:has(.ok) #nav,#book:has(.ok) #steps,#book:has(.ok) #sum{display:none}
+.cover{max-width:760px;margin:0 auto;text-align:center;padding:0 0 34px}
+.cover .cv{height:clamp(300px,78vw,460px);overflow:hidden;border-radius:0 0 30px 30px;position:relative}
+.cover .cv img{width:100%;height:100%;object-fit:cover;object-position:center 34%;display:block}
+.cover .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--glow))}
+.cover .logo{display:block;width:112px;height:112px;margin:-56px auto 0;position:relative;z-index:2;border-radius:50%;background:#fff;padding:10px;object-fit:contain;border:3px solid var(--surface);box-shadow:0 10px 28px var(--glow)}
+.cover h1{font-size:clamp(2rem,9vw,3rem);font-weight:900;line-height:1.1;margin:14px 0 6px}
+.cover p{max-width:460px;margin:12px auto 24px;padding:0 24px;color:var(--muted);font-weight:300}
+#book{scroll-margin-top:0}
+#book[data-s="2"] #f label.lg,#book[data-s="2"] #f #slotsBox{display:none}
+#book[data-s="2"] #f.wl #slotsBox{display:block}
+#book[data-s="2"] #f{padding:18px 10px}
+.wkbar{display:flex;align-items:center;gap:8px;margin-bottom:12px;position:relative}
+.wki{flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:1.4rem;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0}
+.wki[disabled]{opacity:.35;pointer-events:none}
+#wkm{flex:1;min-width:0;min-height:44px;border-radius:999px;text-align:center;text-align-last:center}
+.wkj{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.wkg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.wd{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.wd b{font-size:1.02rem;font-weight:700;width:30px;height:30px;display:grid;place-items:center;border-radius:50%}
+.wd.today b{background:var(--rose);color:#fff}
+.wd small{font-size:.66rem;color:var(--muted)}
+.wd .bg{font:inherit;font-size:.62rem;line-height:1;border:0;border-radius:6px;padding:4px 5px;min-height:0;color:#fff}
+.bg.f{background:var(--rose)}.bg.m{background:var(--ink);color:var(--bg)}.bg.c{background:var(--muted)}
+.wd.past{opacity:.4}
+.ws{display:grid;gap:6px;width:100%;margin-top:6px}
+.ws button{font:inherit;font-size:.74rem;font-weight:500;min-height:38px;padding:0;border:1.5px solid var(--rose);background:var(--rose2);color:var(--ink);border-radius:8px;cursor:pointer;touch-action:manipulation}
+.ws button.on{background:var(--rose);color:#fff;box-shadow:0 6px 14px var(--glow)}
+</style>
+</head>
+<body>
+<section id="adm" hidden></section>
+<header class="cover"><div class="cv"><img src="img/cover.jpg" alt="Nail Studio by Opal Ben Moha"></div><img class="logo" src="img/logo.png" alt="Nail Studio by Opal Ben Moha" width="112" height="112"><h1>אופל בן מוחה</h1><div class="eyebrow">NAIL STUDIO · רמלה</div><p>עיצוב מדויק, חומרים איכותיים ותשומת לב לכל פרט קטן. בואי לצאת עם ידיים שמרגישות כמו יום חג.</p><a class="btn" href="#book">לקביעת תור</a></header>
+<div class="trust"><span>קביעת תור אונליין בכל שעה</span><span>חניה גדולה ממול</span><span>פדיקור ללא סכין</span></div>
+
+<section id="book" data-s="1">
+  <div class="steps" id="steps"><button type="button" data-g="1"><i>1</i>טיפולים</button><button type="button" data-g="2"><i>2</i>זמן</button><button type="button" data-g="3"><i>3</i>פרטים</button></div>
+  <div class="sec-h reveal"><small>הטיפולים</small><h2>מה נעשה היום?</h2><p>אפשר לבחור יותר מטיפול אחד</p></div>
+  <div class="opts reveal" id="opts">
+    <label class="opt"><input type="checkbox" data-id="anat" value="מניקור לק ג׳ל מבנה אנטומי" data-d="65" data-p="150" data-f="0"><span class="ic ph"><img src="img/t-anat.jpg" alt="" width="46" height="46"></span><span><b>מניקור לק ג׳ל מבנה אנטומי</b><span class="d">חיזוק וצורה טבעית שמחזיקה לאורך זמן</span></span><span class="tick">✓</span></label>
+    <label class="opt"><input type="checkbox" data-id="manirem" value="מניקור + הסרה" data-d="30" data-p="90" data-f="0"><span class="ic ph"><img src="img/t-manirem.jpg" alt="" width="46" height="46"></span><span><b>מניקור + הסרה</b><span class="d">מניקור כולל הסרה</span></span><span class="tick">✓</span></label>
+    <label class="opt"><input type="checkbox" data-id="feet" value="לק ג׳ל רגליים" data-d="60" data-p="120" data-f="0"><span class="ic ph"><img src="img/t-feet.jpg" alt="" width="46" height="46"></span><span><b>לק ג׳ל רגליים</b><span class="d">צבע חלק ומבריק לכפות הרגליים</span></span><span class="tick">✓</span></label>
+    <label class="opt"><input type="checkbox" data-id="feetped" value="לק ג׳ל רגליים + פדיקור כף הרגל ללא סכין" data-d="80" data-p="190" data-f="0"><span class="ic ph"><img src="img/t-feetped.jpg" alt="" width="46" height="46"></span><span><b>לק ג׳ל רגליים + פדיקור כף הרגל ללא סכין</b><span class="d">טיפוח עדין ובטוח, בלי להשתמש בסכין</span></span><span class="tick">✓</span></label>
+    <label class="opt"><input type="checkbox" data-id="gel" value="בנייה בג׳ל" data-d="120" data-p="330" data-f="1"><span class="ic ph"><img src="img/t-gel.jpg" alt="" width="46" height="46"></span><span><b>בנייה בג׳ל</b><span class="d">הארכה ועיצוב ציפורניים בג׳ל</span></span><span class="tick">✓</span></label>
+    <label class="opt"><input type="checkbox" data-id="revtips" value="בנייה בטיפס הפוך" data-d="120" data-p="380" data-f="0"><span class="ic ph"><img src="img/t-revtips.jpg" alt="" width="46" height="46"></span><span><b>בנייה בטיפס הפוך</b><span class="d">שיטה מדויקת לצורה סימטרית ויציבה</span></span><span class="tick">✓</span></label>
+    <label class="opt"><input type="checkbox" data-id="fill" value="השלמה" data-d="15" data-p="10" data-f="0"><span class="ic">✺</span><span><b>השלמה</b><span class="d">תחזוקה והשלמה לבנייה קיימת</span></span><span class="tick">✓</span></label>
+  </div>
+  <div class="sum" id="sum">עוד לא נבחר טיפול</div>
+
+  <form class="form reveal" id="f" novalidate>
+    <div class="st2" id="wk"><div class="wkbar"><button type="button" class="wki" id="wkc" aria-label="בחירת תאריך"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></button><select id="wkm" aria-label="חודש"></select><button type="button" class="wki" id="wkp" aria-label="שבוע קודם">›</button><button type="button" class="wki" id="wkn" aria-label="שבוע הבא">‹</button><input type="date" id="wkj" class="wkj" tabindex="-1" aria-hidden="true"></div><div class="hint" id="wkt"></div><div class="wkg" id="wkg"></div></div>
+    <label class="st2 lg">באיזה יום?<input type="date" id="date"></label>
+    <div class="st2" id="slotsBox"><div class="hint" id="slotHint">נא לבחור טיפול ותאריך כדי לראות שעות פנויות</div><div class="slots" id="slots"></div></div>
+    <div class="sum st3" id="recap"></div>
+    <div class="row rowN">
+      <label>שם מלא<input type="text" id="name" autocomplete="name"></label>
+      <label>טלפון<input type="tel" id="tel" autocomplete="tel" inputmode="tel"></label>
+    </div>
+    <label class="tc st3"><input type="checkbox" id="tc"><span>קראתי ואני מאשרת את <a href="#terms">התקנון ומדיניות הביטולים</a></span></label>
+    <label class="st3">הערות, למשל קישוטים או עיצוב מיוחד (אופציונלי)<textarea id="note"></textarea></label>
+    <div class="err" id="err"></div>
+    <button class="btn st3" type="submit" id="go">קביעת התור</button>
+  </form>
+  <div class="nav" id="nav"><button type="button" class="btn" id="nx">המשך</button><button type="button" class="pv" id="pv">חזרה</button></div>
+  
+</section>
+
+<section id="gal" hidden><div class="sec-h reveal"><small>העבודות</small><h2>גלריה</h2></div><div class="tabs" id="galTabs"></div><div class="gal" id="galGrid"></div></section>
+<section class="reveal" style="padding-bottom:10px"><div class="card2" style="text-align:center;padding:14px 14px 22px"><img src="img/opal.jpg" alt="אופל, Nail Studio by Opal Ben Moha" loading="lazy" style="width:100%;max-height:420px;object-fit:cover;object-position:center 25%;border-radius:18px"><h3 style="margin-top:14px">שלום, אני אופל</h3><p>ברוכה הבאה לסטודיו. אשמח לראות אותך.</p></div></section>
+<div class="loc reveal"><div class="card"><small style="color:var(--gold);letter-spacing:.3em;font-size:.75rem">איפה אנחנו</small><h2>רמלה</h2><p><strong>אהרון בן יוסף 27</strong></p><p>חניה גדולה ממול</p><div id="hrs"></div><div id="ct"></div><a class="btn" target="_blank" rel="noopener" href="https://waze.com/ul?q=%D7%90%D7%94%D7%A8%D7%95%D7%9F%20%D7%91%D7%9F%20%D7%99%D7%95%D7%A1%D7%A3%2027%20%D7%A8%D7%9E%D7%9C%D7%94&navigate=yes">ניווט לסטודיו</a></div></div>
+<section style="padding-top:20px"><div class="sec-h"><small>שאלות נפוצות</small><h2>טוב לדעת</h2></div><details><summary>אפשר לבחור כמה טיפולים בתור אחד?</summary><p>כן. מסמנים כמה טיפולים, והאתר מחשב את הזמן והמחיר הכולל ומציג רק שעות פנויות שמתאימות לכולם.</p></details><details><summary>איפה מחנים?</summary><p>יש חניה גדולה ממש מול הסטודיו, באהרון בן יוסף 27 ברמלה.</p></details><details><summary>כמה עולה בנייה בג׳ל?</summary><p>המחיר מתחיל ב־330 ₪ ומשתנה לפי העבודה.</p></details><details><summary>האם פרנץ כלול במחיר?</summary><p>כן, פרנץ כלול במחיר הטיפול.</p></details><details><summary>כמה עולים קישוטים?</summary><p>המחיר נקבע לפי המורכבות של העיצוב. אפשר לציין בהערות בזמן קביעת התור מה את מחפשת.</p></details><details><summary>צריך לשנות או לבטל תור?</summary><p>ביטול 24 שעות מראש או יותר ללא חיוב. ביטול ביום התור כרוך בחיוב מלא. <a class="rm" href="#terms">לתקנון המלא</a></p></details><details><summary>מתי כדאי לקבוע את התור הבא?</summary><p>בסיום הטיפול, כי היומן מתמלא.</p></details></section>
+<section id="rev" hidden><div class="sec-h reveal"><small>המלצות</small><h2>מה לקוחות אומרות</h2></div><div class="rv" id="rvShots"><div class="card2" style="padding:6px"><img loading="lazy" alt="המלצה מלקוחה" style="width:100%;height:auto;display:block;border-radius:14px" src="img/review1.jpg"></div><div class="card2" style="padding:6px"><img loading="lazy" alt="המלצה מלקוחה" style="width:100%;height:auto;display:block;border-radius:14px" src="img/review2.jpg"></div><div class="card2" style="padding:6px"><img loading="lazy" alt="המלצה מלקוחה" style="width:100%;height:auto;display:block;border-radius:14px" src="img/review3.jpg"></div><div class="card2" style="padding:6px"><img loading="lazy" alt="המלצה מלקוחה" style="width:100%;height:auto;display:block;border-radius:14px" src="img/review4.jpg"></div><div class="card2" style="padding:6px"><img loading="lazy" alt="המלצה מלקוחה" style="width:100%;height:auto;display:block;border-radius:14px" src="img/review5.jpg"></div></div><div class="rv" id="rvl"></div><details id="rvf" style="margin-top:14px"><summary>רוצה להשאיר המלצה?</summary><div class="form" style="box-shadow:none;margin-top:12px;padding:16px"><label>שם<input type="text" id="rvn" maxlength="40"></label><label>ההמלצה שלך<textarea id="rvt" maxlength="400"></textarea></label><label class="tc"><input type="checkbox" id="rvc"><span>אני מאשרת לפרסם את ההמלצה באתר</span></label><div class="err" id="rve"></div><button class="btn" type="button" id="rvs">שליחת המלצה</button></div></details></section>
+<section id="termsPg"><div class="sec-h"><small>תקנון</small><h2>תקנון הסטודיו</h2><p>כדי שיהיה נעים ומסודר לכולן</p></div>
+<div class="card2"><h3>התור הבא</h3><p>קובעים את התור הבא בסיום הטיפול, כי היומן מתמלא.</p></div>
+<div class="card2"><h3>ביטול תור</h3><p>ביטול 24 שעות מראש או יותר, ללא חיוב.<br>ביטול ביום התור כרוך בחיוב מלא, בהתאם למדיניות שהוצגה ואושרה מראש.</p></div>
+<div class="card2"><h3>איחורים</h3><p>איחור של יותר מ־10 דקות עלול להביא לביטול התור ולחיוב בהתאם למדיניות.</p></div>
+<div class="card2"><h3>הגעה בזמן</h3><p>נבקש להגיע בזמן, לא מוקדם ולא באיחור.</p></div>
+<a class="btn" href="#book" style="display:block;text-align:center">חזרה לקביעת תור</a></section>
+<a class="btn sticky" id="stk" href="#book">קביעת תור</a>
+<footer><a href="#terms">תקנון</a> · Nail Studio by Opal Ben Moha · נשמח לראות אותך</footer>
+
+<style>
+.noimg{display:none!important}
+.ic.ph.noimg{display:grid!important}.ic.ph.noimg img{display:none}
+#adm{max-width:760px;margin:0 auto;padding:28px 16px}
+#adm .card2 h3{margin-bottom:10px}
+#adm details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+#adm summary{min-height:32px;display:flex;align-items:center;gap:8px}
+#adm input,#adm select,#adm textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px}
+#adm .btn{width:100%;margin-top:10px;padding:12px 18px}
+#adm .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+#adm .bk{overflow:hidden}
+#adm .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+#adm .acts button,#adm .acts a{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:9px 12px;min-height:40px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+#adm .acts .warn{color:#b3365b;border-color:#f0b6c8}
+#adm .tag{display:inline-block;font-size:.72rem;border-radius:8px;padding:2px 8px;margin-inline-start:6px;background:var(--bg);color:var(--muted)}
+#adm .tag.bad{background:#fde3ea;color:#b3365b}
+#adm .day{margin:18px 0 6px;color:var(--gold);font-weight:500}
+#adm .msg{min-height:1.4em;text-align:center;color:var(--rose);font-size:.9rem}
+#adm .gg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+#adm .gg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;cursor:pointer}
+#adm .gg img.arm{outline:3px solid #d6648c}
+body.admin>*:not(#adm):not(script){display:none!important}
+.offline{background:#fff7e6;border:1px solid #f3d9a4;color:#7a5a1c;border-radius:14px;padding:10px 14px;font-size:.88rem;margin:0 0 14px;text-align:center}
+</style>
+<script>
+// כתובת השרת. אם השרת עובר לכתובת אחרת, משנים רק כאן.
+var API='https://stock-app-1-dbrs.onrender.com';
+// שעות פעילות ברירת מחדל, עד שהשרת עונה. 0 הוא יום ראשון. יום בלי רשומה סגור.
+var HOURS={0:[8,17],1:[8,18],2:[8,17],3:[8,18],4:[8,17],5:[8,13]};
+var STEP=15,VAC=[],REV=[],GAL=[],ONLINE=null,SMS=false,sel=null;
+var WA='972537143134',IG='https://www.instagram.com/nails_opalbenmoha';
+var DN=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'],MN=['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+var $=function(i){return document.getElementById(i)};
+var boxes=document.querySelectorAll('#opts input');
+
+// תמונה שלא נטענה מוסתרת, כדי שלא יופיע ריבוע ריק
+document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName=='IMG'){var p=t.closest('.cv,.ph')||(t.parentNode.children.length==1?t.parentNode:t);p.classList.add('noimg')}},true);
+
+function h(x){return String(x==null?'':x).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function fmt(m){if(m==15)return'רבע שעה';var hh=Math.floor(m/60),r=m%60,t=hh==1?'שעה':hh==2?'שעתיים':hh+' שעות';return r?(hh?t+' ו־'+r+' דקות':r+' דקות'):t}
+function key(m){return('0'+Math.floor(m/60)).slice(-2)+':'+('0'+m%60).slice(-2)}
+function iso(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function dmy(s){return s.split('-').reverse().join('/')}
+function addd(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+function sun(d){var x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-x.getDay());return x}
+function chosen(){return Array.prototype.filter.call(boxes,function(b){return b.checked})}
+function tot(){var c=chosen(),d=0,p=0,f=0;c.forEach(function(b){d+=+b.dataset.d;p+=+b.dataset.p;if(b.dataset.f=='1')f=1});return{c:c,d:d,p:p,f:f,ids:c.map(function(b){return b.dataset.id}),names:c.map(function(b){return b.value})}}
+function upd(){var t=tot();$('sum').innerHTML=t.c.length?'סה״כ <strong>'+(t.f?'החל מ־':'')+t.p+' ₪</strong> · משך <strong>'+fmt(t.d)+'</strong>':'עוד לא נבחר טיפול'}
+function telOk(p){return/^(0|\+?972)\d{8,9}$/.test(p.replace(/[\s-]/g,''))}
+
+function api(path,opt){
+ opt=opt||{};var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort()},opt.timeout||12000);
+ var hd={};if(opt.body&&!(opt.body instanceof FormData))hd['content-type']='application/json';if(opt.auth&&TOKEN)hd.authorization='Bearer '+TOKEN;
+ return fetch(API+path,{method:opt.method||(opt.body?'POST':'GET'),headers:hd,body:opt.body&&!(opt.body instanceof FormData)?JSON.stringify(opt.body):opt.body,signal:ctl.signal})
+  .then(function(r){clearTimeout(tm);return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var e=new Error(j.detail||'שגיאה');e.status=r.status;throw e}return j})},
+   function(e){clearTimeout(tm);var x=new Error('אין חיבור לשרת');x.status=0;throw x})}
+
+boxes.forEach(function(b){var e=document.createElement('em');e.className='pr';e.textContent=(b.dataset.f=='1'?'החל מ־':'')+b.dataset.p+' ₪ · '+fmt(+b.dataset.d);b.parentNode.querySelector('b').after(e);b.addEventListener('change',function(){upd();sel=null;$('date').value='';week.render()})});
+
+// ---------- לוח שבועי וזמינות
+var week=(function(){
+ var base=new Date();base.setHours(0,0,0,0);
+ var first=sun(base),last=addd(first,7*52),ws=first,busy={},loading=false,seq=0;
+ var mo=$('wkm');for(var i=0;i<12;i++){var md=new Date(base.getFullYear(),base.getMonth()+i,1),o=document.createElement('option');o.value=md.getFullYear()+'-'+md.getMonth();o.textContent=MN[md.getMonth()]+' '+md.getFullYear();mo.appendChild(o)}
+ $('wkj').min=iso(base);
+ function load(){
+  if(!ONLINE){render();return}
+  var my=++seq;loading=true;render();
+  api('/api/availability?start='+iso(ws)+'&days=7').then(function(j){if(my!=seq)return;busy=j.busy;loading=false;render()},function(){if(my!=seq)return;loading=false;$('wkt').textContent='לא ניתן לטעון שעות כרגע, נסי לרענן';})}
+ function slotsFor(di,d,t){
+  var hr=HOURS[d.getDay()],now=new Date(),nm=now.getHours()*60+now.getMinutes(),ti=iso(base),out=[];
+  if(!hr||di<ti||VAC.some(function(v){return di>=v.from&&di<=v.to}))return null;
+  var bz=ONLINE?busy[di]:[];if(!bz)return'?';
+  for(var m=hr[0]*60;m+t.d<=hr[1]*60;m+=STEP){if(di==ti&&m<=nm)continue;var e=m+t.d;if(bz.some(function(r){return m<r[1]&&r[0]<e}))continue;out.push(m)}
+  return out}
+ function render(){
+  var t=tot(),ti=iso(base),g=$('wkg'),html='',mid=addd(ws,3);mo.value=mid.getFullYear()+'-'+mid.getMonth();
+  $('wkp').disabled=ws<=first;$('wkn').disabled=ws>=last;
+  $('wkt').textContent=!t.d?'':loading?'טוען שעות פנויות…':'בחרי יום ושעה · משך הטיפול '+fmt(t.d)+(ONLINE===false?' · ההזמנה תישלח לסטודיו בוואטסאפ':'');
+  for(var i=0;i<7;i++){
+   var d=addd(ws,i),di=iso(d),past=di<ti,sl=t.d?slotsFor(di,d,t):[],bd='';
+   if(!past){if(sl===null)bd='<span class="bg c">סגור</span>';else if(t.d&&sl!=='?')bd=sl.length?'<span class="bg f">פנוי</span>':(ONLINE?'<button type="button" class="bg m" data-w="'+di+'">מלא</button>':'<span class="bg m">מלא</span>')}
+   var list=(sl&&sl!=='?')?sl:[];
+   html+='<div class="wd'+(past?' past':'')+(di==ti?' today':'')+'"><b>'+d.getDate()+'</b><small>'+DN[d.getDay()]+'</small>'+bd+'<div class="ws">'+list.map(function(m){return'<button type="button" data-d="'+di+'" data-m="'+m+'" class="'+(sel===m&&$('date').value==di?'on':'')+'">'+key(m)+'</button>'}).join('')+'</div></div>'}
+  g.innerHTML=html}
+ $('wkg').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  if(b.dataset.w){$('date').value=b.dataset.w;sel=null;$('f').classList.add('wl');waitUI();return}
+  if(b.dataset.m){$('f').classList.remove('wl');$('date').value=b.dataset.d;sel=+b.dataset.m;render();setTimeout(function(){wz.sync();wz.go(3)},220)}});
+ $('wkp').onclick=function(){if(ws>first){ws=addd(ws,-7);load()}};
+ $('wkn').onclick=function(){if(ws<last){ws=addd(ws,7);load()}};
+ mo.onchange=function(){var p=this.value.split('-'),d=new Date(+p[0],+p[1],1);ws=d<base?first:sun(d);load()};
+ $('wkc').onclick=function(){var j=$('wkj');try{j.showPicker()}catch(e){j.focus();j.click()}};
+ $('wkj').onchange=function(){if(!this.value)return;var d=sun(new Date(this.value+'T00:00:00'));ws=d<first?first:d;load()};
+ return{load:load,render:render}})();
+
+// ---------- רשימת המתנה כשיום מלא
+function waitUI(){
+ var dv=$('date').value,box=$('slots');$('slotHint').textContent='היום '+DN[new Date(dv+'T00:00:00').getDay()]+' '+dmy(dv)+' מלא. אפשר להשאיר שם וטלפון ונעדכן אם יתפנה מקום.';
+ box.innerHTML='';var w=document.createElement('button');w.type='button';w.textContent='עדכנו אותי אם יתפנה מקום';w.style.cssText='grid-column:1/-1;font:inherit;cursor:pointer;background:var(--surface);color:var(--rose);border:1.5px solid var(--rose2);border-radius:999px;padding:12px';
+ w.onclick=function(){var er=$('err'),n=$('name').value.trim(),ph=$('tel').value.trim();
+  if(!n||!ph){er.textContent='נא למלא שם וטלפון כדי להצטרף לרשימת המתנה';$('name').focus();return}
+  if(!telOk(ph)){er.textContent='נא להזין מספר טלפון תקין';return}
+  w.disabled=true;api('/api/waitlist',{body:{name:n,tel:ph,date:dv,services:tot().ids}}).then(function(){er.textContent='';box.innerHTML='';$('slotHint').textContent='נרשמת לרשימת ההמתנה ל־'+dmy(dv)+'. אם יתפנה מקום ניצור איתך קשר.'},function(x){w.disabled=false;er.textContent=x.message})};
+ box.appendChild(w)}
+
+// ---------- שליחת התור
+$('f').addEventListener('submit',function(e){
+ e.preventDefault();var t=tot(),dv=$('date').value,n=$('name').value.trim(),ph=$('tel').value.trim(),nt=$('note').value.trim(),er=$('err'),go=$('go');
+ if(!t.c.length){er.textContent='נא לבחור לפחות טיפול אחד';return}
+ if(!dv||sel===null){er.textContent='נא לבחור תאריך ושעה';return}
+ if(!n||!ph){er.textContent='נא למלא שם וטלפון';return}
+ if(!telOk(ph)){er.textContent='נא להזין מספר טלפון תקין';return}
+ if(!$('tc').checked){er.textContent='נא לאשר את התקנון';return}
+ er.textContent='';var day='יום '+DN[new Date(dv+'T00:00:00').getDay()]+' '+dmy(dv),tm=key(sel);
+ if(ONLINE===false){
+  var msg='שלום, אשמח לקבוע תור ב־Nail Studio by Opal Ben Moha\nשם: '+n+'\nטלפון: '+ph+'\nטיפולים: '+t.names.join(', ')+'\nתאריך: '+day+'\nשעה: '+tm+'\nמשך: '+fmt(t.d)+' · '+(t.f?'החל מ־':'')+t.p+' ₪'+(nt?'\nהערות: '+nt:'');
+  var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+  $('f').innerHTML='<div class="ok"><h3>כמעט סיימנו</h3><p>'+h(n)+', לחצי על הכפתור ושלחי את ההודעה בוואטסאפ. התור יישמר אחרי שאופל תאשר.</p><p style="color:var(--muted)">'+day+' בשעה '+tm+'</p><a class="btn" target="_blank" rel="noopener" href="'+url+'">שליחה בוואטסאפ</a></div>';return}
+ go.disabled=true;go.textContent='שומרת את התור…';
+ api('/api/bookings',{body:{name:n,tel:ph,note:nt,services:t.ids,date:dv,start:sel,terms:true},timeout:20000}).then(function(j){
+  $('f').innerHTML='<div class="ok"><h3>התור נקבע ואושר</h3><p>'+h(n)+', מחכים לך ב'+day+' בשעה '+key(j.start)+'.</p><p style="color:var(--muted)">משך הטיפול: '+fmt(j.dur)+' · '+(j.from?'החל מ־':'')+j.price+' ₪</p>'
+   +(SMS?'<p style="color:var(--muted)">אישור נשלח אלייך עכשיו בהודעת SMS, ותזכורת תגיע בבוקר יום התור.</p>':'')
+   +'<p style="color:var(--muted)">מומלץ לקבוע את התור הבא כבר בסיום הטיפול, כי היומן מתמלא.</p><a class="btn" target="_blank" rel="noopener" href="'+gcal(dv,j.start,j.dur)+'">הוספה ליומן</a></div>'},
+ function(x){go.disabled=false;go.textContent='קביעת התור';er.textContent=x.status===0?'אין חיבור לשרת. נא לבדוק את האינטרנט ולנסות שוב.':x.message;if(x.status===409){sel=null;week.load();setTimeout(function(){wz.go(2)},1600)}})});
+function gcal(dv,m,d){var f=function(x){return dv.replace(/-/g,'')+'T'+key(x).replace(':','')+'00'};return'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('תור ב־Nail Studio by Opal Ben Moha')+'&dates='+f(m)+'/'+f(m+d)+'&ctz=Asia/Jerusalem&location='+encodeURIComponent('אהרון בן יוסף 27, רמלה')}
+
+// ---------- שלבי הקביעה
+var wz=(function(){
+ var bk=$('book'),g=1;
+ function ok(n){if(n>=2&&!tot().c.length)return false;if(n>=3&&(!$('date').value||sel===null))return false;return true}
+ function sync(){var t=$('steps').children;for(var i=0;i<3;i++){var n=i+1;t[i].className=(n==g?'on':(n<g&&ok(n)?'done':''))+(ok(n)?'':' lock')}$('nx').disabled=!ok(g+1)}
+ function go(n){if(n<1||n>3||!ok(n))return;g=n;bk.dataset.s=n;if(n==2)$('err').textContent='';
+  if(n==3)$('recap').innerHTML='<strong>'+dmy($('date').value)+'</strong> בשעה <strong>'+key(sel)+'</strong> · '+h(tot().names.join(', '));
+  sync();$('steps').scrollIntoView({behavior:'smooth',block:'start'})}
+ $('steps').addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(+b.dataset.g)});
+ $('nx').onclick=function(){go(g+1)};$('pv').onclick=function(){go(g-1)};
+ bk.addEventListener('change',function(){setTimeout(sync,0)});
+ new MutationObserver(sync).observe($('sum'),{childList:true,characterData:true,subtree:true});
+ sync();return{go:go,sync:sync}})();
+
+// ---------- פרטי הסטודיו, המלצות, גלריה
+function info(){
+ var g={},o=[];for(var i=0;i<7;i++){var hr=HOURS[i];if(!hr)continue;var k=hr[0]+':00 עד '+hr[1]+':00';(g[k]=g[k]||[]).push(DN[i])}
+ for(var k in g)o.push('<p><strong style="font-size:1rem">'+g[k].join(', ')+'</strong> · '+k+'</p>');
+ var closed=DN.filter(function(_,i){return!HOURS[i]});
+ $('hrs').innerHTML='<div style="margin:14px 0 0;border-top:1px dashed var(--line);padding-top:12px">'+o.join('')+(closed.length?'<p>'+closed.join(', ')+' סגור</p>':'')+'</div>';
+ $('ct').innerHTML='<a class="btn s2" target="_blank" rel="noopener" href="https://wa.me/'+WA+'">וואטסאפ</a><a class="btn s2" target="_blank" rel="noopener" href="'+IG+'">אינסטגרם</a>'}
+var stk=$('stk'),bkS=$('book');function sc(){var r=bkS.getBoundingClientRect();stk.classList.toggle('on',scrollY>300&&(r.top>innerHeight*0.8||r.bottom<0))}addEventListener('scroll',sc,{passive:true});
+function revShow(){var b=$('rvl');b.innerHTML='';REV.forEach(function(r){var c=document.createElement('div');c.className='card2';var p=document.createElement('p');p.textContent='״'+r.t+'״';var s=document.createElement('small');s.textContent='— '+r.n;c.append(p,s);b.appendChild(c)});$('rev').hidden=false;$('rvl').hidden=!REV.length;$('rvf').hidden=!ONLINE}
+$('rvs').onclick=function(){var n=$('rvn').value.trim(),t=$('rvt').value.trim(),e=$('rve');if(!n||!t){e.textContent='נא למלא שם והמלצה';return}if(!$('rvc').checked){e.textContent='נא לאשר פרסום ההמלצה';return}
+ $('rvs').disabled=true;api('/api/reviews',{body:{n:n,t:t,ok:true}}).then(function(){$('rvf').innerHTML='<div class="ok"><h3>תודה רבה!</h3><p>ההמלצה התקבלה ותפורסם אחרי אישור.</p></div>'},function(x){e.textContent=x.message;$('rvs').disabled=false})};
+var CATS=['בנייה','מבנה אנטומי','פרנץ׳','עיצובים','פדיקור'],gcur='הכל';
+function galShow(){var tabs=$('galTabs'),gr=$('galGrid');$('gal').hidden=!GAL.length;if(!GAL.length)return;
+ tabs.innerHTML='';['הכל'].concat(CATS).forEach(function(c){var b=document.createElement('button');b.type='button';b.className='tab'+(c==gcur?' on':'');b.textContent=c;b.onclick=function(){gcur=c;galShow()};tabs.appendChild(b)});
+ var list=GAL.filter(function(it){return gcur=='הכל'||it.cat==gcur});gr.innerHTML='';
+ list.forEach(function(it){var im=document.createElement('img');im.src=API+'/api/gallery/'+it.id;im.alt='עבודה מהסטודיו, '+it.cat;im.loading='lazy';gr.appendChild(im)});
+ if(!list.length)gr.innerHTML='<div class="hint" style="grid-column:1/-1">אין עדיין תמונות בקטגוריה הזו</div>'}
+
+function tmode(){document.body.classList.toggle('tm',location.hash=='#terms');document.body.classList.toggle('admin',location.hash=='#admin');if(location.hash=='#terms')scrollTo(0,0);if(location.hash=='#admin')adminOpen()}
+addEventListener('hashchange',tmode);
+
+// ---------- טעינה
+function boot(){
+ api('/api/public',{timeout:9000}).then(function(j){
+  ONLINE=true;HOURS=j.hours;VAC=j.vacations;REV=j.reviews;GAL=j.gallery;SMS=!!j.sms;info();revShow();galShow();week.load()},
+ function(){ONLINE=false;var o=document.createElement('div');o.className='offline';o.textContent='אין כרגע חיבור למערכת התורים. אפשר עדיין לבחור שעה ולשלוח בקשה לאופל בוואטסאפ.';$('steps').after(o);revShow();week.render()})}
+upd();info();boot();
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+// =================================================== פאנל ניהול (כתובת האתר + #admin)
+var TOKEN=null;try{TOKEN=localStorage.getItem('opalTok')}catch(e){}
+function saveTok(t){TOKEN=t;try{t?localStorage.setItem('opalTok',t):localStorage.removeItem('opalTok')}catch(e){}}
+var A=$('adm'),aTimer=null;
+function adminOpen(){A.hidden=false;if(TOKEN)adminPanel();else adminLogin()}
+function adminLogin(){
+ A.innerHTML='<div class="card2"><h3>כניסה לניהול</h3><input type="password" id="apw" placeholder="סיסמה" autocomplete="current-password"><div class="msg" id="am"></div><button class="btn" id="ago">כניסה</button></div><p style="text-align:center"><a class="rm" href="#">חזרה לאתר</a></p>';
+ function go(){$('ago').disabled=true;api('/api/admin/login',{body:{password:$('apw').value}}).then(function(j){saveTok(j.token);adminPanel()},function(x){$('ago').disabled=false;$('am').textContent=x.message})}
+ $('ago').onclick=go;$('apw').onkeydown=function(e){if(e.key=='Enter')go()}}
+function aerr(x){if(x.status===401){saveTok(null);adminLogin();return}var m=$('am');if(m)m.textContent=x.message}
+function A_(path,opt){opt=opt||{};opt.auth=true;return api(path,opt).catch(function(x){aerr(x);throw x})}
+function waLink(tel,text){var p=String(tel).replace(/\D/g,'');if(p.charAt(0)=='0')p='972'+p.slice(1);return'https://wa.me/'+p+'?text='+encodeURIComponent(text)}
+
+function adminPanel(){
+ var hrs='',op='';for(var x=6;x<=22;x++)op+='<option>'+x+'</option>';
+ for(var i=0;i<7;i++)hrs+='<div class="hr"><span>'+DN[i]+'</span><select data-i="'+i+'" data-k="o"><option value="">סגור</option>'+op+'</select><span style="text-align:center">עד</span><select data-i="'+i+'" data-k="c"><option value="">-</option>'+op+'</select></div>';
+ A.innerHTML='<div class="sec-h" style="margin-bottom:14px"><h2 style="font-size:1.7rem">ניהול הסטודיו</h2></div><div class="msg" id="am"></div>'
+ +'<details open><summary>התורים הקרובים <span class="tag" id="bc"></span></summary><div id="bl"></div></details>'
+ +'<details><summary>רשימת המתנה <span class="tag" id="wc"></span></summary><div id="wlist"></div></details>'
+ +'<details><summary>שעות עבודה</summary>'+hrs+'<button class="btn" id="hs">שמירת שעות</button></details>'
+ +'<details><summary>חופשות וימים סגורים</summary><div class="row2"><label>מתאריך<input type="date" id="vf"></label><label>עד תאריך<input type="date" id="vt"></label></div><input id="vn" placeholder="הערה (לא חובה)" style="margin-top:8px"><button class="btn" id="vs">חסימת התאריכים</button><div id="vl"></div></details>'
+ +'<details><summary>המלצות <span class="tag" id="rc"></span></summary><div id="rp"></div><p style="color:var(--muted);font-size:.85rem;margin:12px 0 6px">הוספת המלצה ידנית (רק באישור הלקוחה)</p><input id="rn" placeholder="שם הלקוחה"><textarea id="rt" placeholder="ההמלצה" style="margin-top:8px"></textarea><button class="btn" id="rs">הוספה</button></details>'
+ +'<details><summary>גלריה</summary><select id="gc">'+CATS.map(function(c){return'<option>'+c+'</option>'}).join('')+'</select><label class="btn" style="text-align:center;cursor:pointer">העלאת תמונות<input type="file" id="gf" accept="image/*" multiple hidden></label><p style="color:var(--muted);font-size:.82rem">למחיקה: לוחצים על תמונה, ואז לוחצים עליה שוב.</p><div class="gg" id="gg"></div></details>'
+ +'<p style="text-align:center;margin-top:18px"><a class="rm" href="#">לאתר</a> · <a class="rm" href="#admin" id="lo">יציאה</a></p>';
+ A.querySelectorAll('select[data-i]').forEach(function(s){var v=HOURS[s.dataset.i];s.value=v?v[s.dataset.k=='o'?0:1]:''});
+ $('lo').onclick=function(e){e.preventDefault();saveTok(null);adminLogin()};
+ $('hs').onclick=function(){var o={};A.querySelectorAll('select[data-k=o]').forEach(function(s){var i=s.dataset.i,c=A.querySelector('select[data-k=c][data-i="'+i+'"]').value;if(s.value&&c&&+c>+s.value)o[i]=[+s.value,+c]});
+  A_('/api/admin/hours',{method:'PUT',body:{h:o}}).then(function(j){HOURS=j.hours;info();$('am').textContent='השעות נשמרו'})};
+ $('vs').onclick=function(){var f=$('vf').value,t=$('vt').value||f;if(!f){$('am').textContent='נא לבחור תאריך';return}
+  A_('/api/admin/vacations',{body:{from:f,to:t,note:$('vn').value}}).then(function(j){$('vf').value=$('vt').value=$('vn').value='';$('am').textContent=j.existing_bookings?'נחסם. שימי לב: יש '+j.existing_bookings+' תורים קיימים בתאריכים האלה, הם לא בוטלו.':'התאריכים נחסמו';loadVac()})};
+ $('rs').onclick=function(){var n=$('rn').value.trim(),t=$('rt').value.trim();if(!n||!t)return;A_('/api/admin/reviews',{body:{n:n,t:t}}).then(function(){$('rn').value=$('rt').value='';loadRev()})};
+ $('gf').onchange=function(){var fs=[].slice.call(this.files),cat=$('gc').value,inp=this,k=0;$('am').textContent='מעלה '+fs.length+' תמונות…';
+  (function next(){if(k>=fs.length){inp.value='';$('am').textContent='התמונות עלו';loadGal();return}var fd=new FormData();fd.append('cat',cat);fd.append('file',fs[k++]);A_('/api/admin/gallery',{body:fd,timeout:60000}).then(next,next)})()};
+ loadB();loadW();loadVac();loadRev();loadGal();clearInterval(aTimer);aTimer=setInterval(function(){if(location.hash=='#admin'&&TOKEN)loadB()},60000)}
+
+function loadB(){A_('/api/admin/bookings').then(function(j){var bl=$('bl');if(!bl)return;$('bc').textContent=j.bookings.length;bl.innerHTML=j.bookings.length?'':'<div class="hint">אין תורים קרובים</div>';var last='',today=iso(new Date());
+ j.bookings.forEach(function(b){
+  if(b.date!=last){last=b.date;var dh=document.createElement('div');dh.className='day';dh.textContent=(b.date==today?'היום · ':'')+'יום '+DN[new Date(b.date+'T00:00:00').getDay()]+' '+dmy(b.date);bl.appendChild(dh)}
+  var d=document.createElement('div'),sm=b.confirm_sent=='failed'||b.reminder_sent=='failed';d.className='bk';
+  var rem='שלום '+b.name+', תזכורת לתור שלך '+(b.date==today?'היום':'ב־'+dmy(b.date))+' בשעה '+key(b.start)+' ב־Nail Studio by Opal Ben Moha, אהרון בן יוסף 27 רמלה. חניה גדולה ממול. מחכים לך!';
+  d.innerHTML='<b>'+key(b.start)+'–'+key(b.start+b.dur)+'</b> · '+h(b.name)+(sm?'<span class="tag bad" title="'+h(b.sms_error||'')+'">ההודעה לא נשלחה</span>':(b.reminder_sent&&b.reminder_sent!='sending'?'<span class="tag">קיבלה תזכורת</span>':''))
+   +'<br><a class="rm" href="tel:'+h(b.tel)+'">'+h(b.tel)+'</a><br>'+h(b.services.join(', '))+' · '+(b.from_price?'החל מ־':'')+b.price+' ₪'+(b.note?'<br><span style="color:var(--muted)">'+h(b.note)+'</span>':'')
+   +'<div class="acts"><a target="_blank" rel="noopener" href="'+waLink(b.tel,rem)+'">תזכורת בוואטסאפ</a><button class="mv">שינוי</button><button class="cx warn">ביטול</button><button class="lc warn">ביטול בחיוב</button></div>';
+  var cx=d.querySelector('.cx'),lc=d.querySelector('.lc');
+  function arm(btn,label,late){if(btn.dataset.a){A_('/api/admin/bookings/'+b.id+'/cancel',{body:{late:late}}).then(function(){$('am').textContent='התור בוטל והשעה התפנתה';loadB();week.load()});return}btn.dataset.a=1;btn.textContent='לחצי שוב לאישור';setTimeout(function(){delete btn.dataset.a;btn.textContent=label},5000)}
+  cx.onclick=function(){arm(cx,'ביטול',false)};lc.onclick=function(){arm(lc,'ביטול בחיוב',true)};
+  d.querySelector('.mv').onclick=function(){var f=document.createElement('div');f.innerHTML='<div class="row2"><input type="date" class="nd" value="'+b.date+'"><input type="time" class="nt" step="900" value="'+key(b.start)+'"></div><div class="acts"><button class="sv">שמירת השינוי</button><button class="cl">סגירה</button></div>';d.appendChild(f);
+   f.querySelector('.cl').onclick=function(){f.remove()};
+   f.querySelector('.sv').onclick=function(){var nd=f.querySelector('.nd').value,nt=f.querySelector('.nt').value.split(':');if(!nd||nt.length<2)return;A_('/api/admin/bookings/'+b.id+'/move',{body:{date:nd,start:+nt[0]*60+ +nt[1]}}).then(function(){$('am').textContent='התור עודכן. כדאי לעדכן את הלקוחה.';loadB();week.load()})}};
+  bl.appendChild(d)})})}
+function loadW(){A_('/api/admin/waitlist').then(function(j){var b=$('wlist');if(!b)return;$('wc').textContent=j.waitlist.length||'';b.innerHTML=j.waitlist.length?'':'<div class="hint">אין ממתינות</div>';
+ j.waitlist.forEach(function(x){var d=document.createElement('div');d.className='bk';d.innerHTML='<b>'+dmy(x.date)+'</b> · '+h(x.name)+'<br>'+h(x.tel)+'<br>'+h(x.services.join(', '))+'<div class="acts"><a target="_blank" rel="noopener" href="'+waLink(x.tel,'שלום '+x.name+', התפנה מקום ב־'+dmy(x.date)+'. מתאים לך לקבוע?')+'">הודעה שהתפנה מקום</a><button>הסרה</button></div>';
+  d.querySelector('button').onclick=function(){A_('/api/admin/waitlist/'+x.id,{method:'DELETE'}).then(loadW)};b.appendChild(d)})})}
+function loadVac(){A_('/api/admin/vacations').then(function(j){var b=$('vl');if(!b)return;b.innerHTML='';VAC=j.vacations;week.render();
+ j.vacations.forEach(function(v){var d=document.createElement('div');d.className='bk';d.innerHTML=dmy(v.from)+' עד '+dmy(v.to)+(v.note?' · '+h(v.note):'')+'<div class="acts"><button>הסרה</button></div>';d.querySelector('button').onclick=function(){A_('/api/admin/vacations/'+v.id,{method:'DELETE'}).then(loadVac)};b.appendChild(d)})})}
+function loadRev(){A_('/api/admin/reviews').then(function(j){var b=$('rp');if(!b)return;b.innerHTML='';var pend=j.reviews.filter(function(r){return!r.approved}).length;$('rc').textContent=pend?pend+' ממתינות':'';
+ j.reviews.forEach(function(r){var d=document.createElement('div');d.className='bk';d.innerHTML=(r.approved?'':'<span class="tag bad">ממתינה לאישור</span><br>')+'<b>'+h(r.n)+'</b><br>'+h(r.t)+'<div class="acts">'+(r.approved?'':'<button class="ap">אישור ופרסום</button>')+'<button class="dl warn">מחיקה</button></div>';
+  var ap=d.querySelector('.ap');if(ap)ap.onclick=function(){A_('/api/admin/reviews/'+r.id+'/approve',{body:{}}).then(loadRev)};
+  d.querySelector('.dl').onclick=function(){if(confirm('למחוק את ההמלצה?'))A_('/api/admin/reviews/'+r.id,{method:'DELETE'}).then(loadRev)};b.appendChild(d)})})}
+function loadGal(){api('/api/public').then(function(j){GAL=j.gallery;galShow();var g=$('gg');if(!g)return;g.innerHTML='';
+ GAL.forEach(function(it){var im=document.createElement('img');im.src=API+'/api/gallery/'+it.id;im.alt=it.cat;im.title=it.cat;
+  im.onclick=function(){if(!im.classList.contains('arm')){im.classList.add('arm');setTimeout(function(){im.classList.remove('arm')},4000);return}A_('/api/admin/gallery/'+it.id,{method:'DELETE'}).then(loadGal)};g.appendChild(im)})})}
+tmode();
+</script>
+</body>
+</html>
