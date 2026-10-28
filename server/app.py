@@ -158,21 +158,45 @@ def today_il():
 # ---------------------------------------------------------------- rate limits
 
 _hits = {}
+_hits_lock = threading.Lock()
+# Limits for all visitors together. The per-visitor limit depends on the visitor's
+# address, which a determined attacker can fake by sending a forged
+# X-Forwarded-For header (Render appends to that header and never resets it).
+# These caps hold no matter what address is claimed.
+GLOBAL_LIMITS = {"login": (30, 900), "book": (40, 3600), "wait": (40, 3600), "rev": (20, 3600)}
 
 
 def client_ip(req: Request):
+    # Cloudflare in front of Render sets CF-Connecting-IP itself and overwrites any
+    # value the visitor sent, so it is the trustworthy one when present.
+    cf = req.headers.get("cf-connecting-ip", "").strip()
+    if cf:
+        return cf
     xf = req.headers.get("x-forwarded-for", "")
     return (xf.split(",")[0].strip() if xf else (req.client.host if req.client else "?"))
 
 
-def limit(req: Request, bucket: str, n: int, per_s: int):
-    k = (bucket, client_ip(req))
-    t = time.time()
+def _take(k, n, per_s, t):
     q = [x for x in _hits.get(k, []) if t - x < per_s]
     if len(q) >= n:
-        raise HTTPException(429, "יותר מדי ניסיונות, נא לנסות שוב מאוחר יותר")
+        _hits[k] = q
+        return False
     q.append(t)
     _hits[k] = q
+    return True
+
+
+def limit(req: Request, bucket: str, n: int, per_s: int):
+    t = time.time()
+    with _hits_lock:
+        if len(_hits) > 5000:  # forget visitors with no recent hits, so the table cannot grow without end
+            for k in [k for k, v in _hits.items() if not v or t - v[-1] > 3600]:
+                del _hits[k]
+        ok = _take((bucket, client_ip(req)), n, per_s, t)
+        if ok and bucket in GLOBAL_LIMITS:
+            ok = _take((bucket, "*"), *GLOBAL_LIMITS[bucket], t)
+    if not ok:
+        raise HTTPException(429, "יותר מדי ניסיונות, נא לנסות שוב מאוחר יותר")
 
 # ---------------------------------------------------------------- admin auth
 
@@ -249,6 +273,20 @@ def day_open(c, d: date):
 
 def clean(s, n):
     return re.sub(r"[\x00-\x08\x0b-\x1f\x7f]", "", (s or "").strip())[:n]
+
+
+LINKISH = re.compile(r"(https?:|www\.|\w\.(com|co|il|net|org|ly|me|io|link|xyz|ru)\b|@)", re.I)
+
+
+def clean_name(s):
+    """The name goes into the SMS the studio sends, so it must not carry a link
+    that would turn the studio's message into someone else's scam."""
+    name = clean(s, 60)
+    if not name:
+        raise HTTPException(400, "נא למלא שם")
+    if LINKISH.search(name) or re.search(r"\d{3}", name):
+        raise HTTPException(400, "נא להזין שם בלבד")
+    return name
 
 # ---------------------------------------------------------------- messages
 
@@ -392,9 +430,7 @@ class BookingIn(BaseModel):
 @app.post("/api/bookings")
 async def create_booking(b: BookingIn, req: Request):
     limit(req, "book", 8, 3600)
-    name = clean(b.name, 60)
-    if not name:
-        raise HTTPException(400, "נא למלא שם")
+    name = clean_name(b.name)
     tel = norm_tel(b.tel)
     svc = list(dict.fromkeys(b.services))
     if not svc or any(s not in SERVICES for s in svc):
@@ -439,9 +475,7 @@ class WaitIn(BaseModel):
 @app.post("/api/waitlist")
 def join_waitlist(w: WaitIn, req: Request):
     limit(req, "wait", 6, 3600)
-    name = clean(w.name, 60)
-    if not name:
-        raise HTTPException(400, "נא למלא שם")
+    name = clean_name(w.name)
     tel = norm_tel(w.tel)
     d = parse_day(w.date)
     svc = [s for s in dict.fromkeys(w.services) if s in SERVICES]
