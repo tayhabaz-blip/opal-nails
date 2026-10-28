@@ -163,7 +163,7 @@ _hits_lock = threading.Lock()
 # address, which a determined attacker can fake by sending a forged
 # X-Forwarded-For header (Render appends to that header and never resets it).
 # These caps hold no matter what address is claimed.
-GLOBAL_LIMITS = {"login": (30, 900), "book": (40, 3600), "wait": (40, 3600), "rev": (20, 3600)}
+GLOBAL_LIMITS = {"login": (30, 900), "book": (150, 3600), "wait": (150, 3600), "rev": (20, 3600)}
 
 
 def client_ip(req: Request):
@@ -196,7 +196,7 @@ def limit(req: Request, bucket: str, n: int, per_s: int):
         if ok and bucket in GLOBAL_LIMITS:
             ok = _take((bucket, "*"), *GLOBAL_LIMITS[bucket], t)
     if not ok:
-        raise HTTPException(429, "יותר מדי ניסיונות, נא לנסות שוב מאוחר יותר")
+        raise HTTPException(429, "יש כרגע עומס, נא לנסות שוב בעוד כמה דקות")
 
 # ---------------------------------------------------------------- admin auth
 
