@@ -130,6 +130,12 @@ body:not(.tm) #termsPg{display:none}body.tm>*:not(#termsPg):not(footer){display:
 .ws{display:grid;gap:6px;width:100%;margin-top:6px}
 .ws button{font:inherit;font-size:.74rem;font-weight:500;min-height:38px;padding:0;border:1.5px solid var(--rose);background:var(--rose2);color:var(--ink);border-radius:8px;cursor:pointer;touch-action:manipulation}
 .ws button.on{background:var(--rose);color:#fff;box-shadow:0 6px 14px var(--glow)}
+#adm .bt{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:.9rem;margin-top:6px}
+#adm .bt th{font-weight:500;color:var(--muted);font-size:.78rem;text-align:start;padding:8px 10px;background:var(--bg);border-bottom:1px solid var(--line)}
+#adm .bt td{padding:10px;vertical-align:top;border-bottom:1px solid var(--line)}#adm .bt tr:last-child td{border-bottom:0}
+#adm .bt .br{cursor:pointer}#adm .bt .br.open td{background:var(--glow)}#adm .bt .tm{white-space:nowrap;font-weight:700;color:var(--rose)}#adm .bt .tm small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
+#adm .bt b{color:var(--ink)}#adm .bt .tag{display:block;width:max-content;margin-top:3px}#adm .bt .wa{display:inline-block;white-space:nowrap;font-size:.78rem;color:#fff;background:#25a35a;border-radius:10px;padding:7px 10px;text-decoration:none}
+#adm .bt .dr td{padding:0 8px 8px}#adm .bt .dr .bk{margin-top:0}#adm .day.now{color:var(--rose);font-weight:700}
 </style>
 </head>
 <body>
@@ -393,26 +399,34 @@ function adminPanel(){
   (function next(){if(k>=fs.length){inp.value='';$('am').textContent='התמונות עלו';loadGal();return}var fd=new FormData();fd.append('cat',cat);fd.append('file',fs[k++]);A_('/api/admin/gallery',{body:fd,timeout:60000}).then(next,next)})()};
  loadB();loadW();loadVac();loadRev();loadGal();clearInterval(aTimer);aTimer=setInterval(function(){if(location.hash=='#admin'&&TOKEN)loadB()},60000)}
 
-function loadB(){A_('/api/admin/bookings').then(function(j){var bl=$('bl');if(!bl)return;$('bc').textContent=j.bookings.length;bl.innerHTML=j.bookings.length?'':'<div class="hint">אין תורים קרובים</div>';var last='',today=iso(new Date());
- j.bookings.forEach(function(b){
-  if(b.date!=last){last=b.date;var dh=document.createElement('div');dh.className='day';dh.textContent=(b.date==today?'היום · ':'')+'יום '+DN[new Date(b.date+'T00:00:00').getDay()]+' '+dmy(b.date);bl.appendChild(dh)}
-  var d=document.createElement('div'),sm=b.confirm_sent=='failed'||b.reminder_sent=='failed';d.className='bk';
+function loadB(){A_('/api/admin/bookings').then(function(j){var bl=$('bl');if(!bl)return;
+ // מיון בצד הדפדפן לפי תאריך ושעה, גם אם השרת מחזיר בסדר אחר
+ var L=j.bookings.slice().sort(function(x,y){return x.date<y.date?-1:x.date>y.date?1:x.start-y.start});
+ $('bc').textContent=L.length;bl.innerHTML=L.length?'':'<div class="hint">אין תורים קרובים</div>';var tb=null,last='',today=iso(new Date());
+ L.forEach(function(b){
+  if(b.date!=last){last=b.date;var n=L.filter(function(x){return x.date==b.date}).length;
+   var dh=document.createElement('div');dh.className='day'+(b.date==today?' now':'');dh.textContent=(b.date==today?'היום · ':'')+'יום '+DN[new Date(b.date+'T00:00:00').getDay()]+' '+dmy(b.date)+' · '+n+(n==1?' תור':' תורים');bl.appendChild(dh);
+   var t=document.createElement('table');t.className='bt';t.innerHTML='<thead><tr><th>שעה</th><th>לקוחה</th><th>טיפול</th><th></th></tr></thead><tbody></tbody>';bl.appendChild(t);tb=t.tBodies[0]}
+  var sm=b.confirm_sent=='failed'||b.reminder_sent=='failed',got=b.reminder_sent&&b.reminder_sent!='sending'&&!sm;
   var rem='שלום '+b.name+', תזכורת לתור שלך '+(b.date==today?'היום':'ב־'+dmy(b.date))+' בשעה '+key(b.start)+' ב־Nail Studio by Opal Ben Moha, אהרון בן יוסף 27 רמלה. חניה גדולה ממול. מחכים לך!';
-  d.innerHTML='<b>'+key(b.start)+'–'+key(b.start+b.dur)+'</b> · '+h(b.name)+(sm?'<span class="tag bad" title="'+h(b.sms_error||'')+'">ההודעה לא נשלחה</span>':(b.reminder_sent&&b.reminder_sent!='sending'?'<span class="tag">קיבלה תזכורת</span>':''))
-   +'<br><a class="rm" href="tel:'+h(b.tel)+'">'+h(b.tel)+'</a><br>'+h(b.services.join(', '))+' · '+(b.from_price?'החל מ־':'')+b.price+' ₪'+(b.note?'<br><span style="color:var(--muted)">'+h(b.note)+'</span>':'')
-   +'<div class="acts"><a target="_blank" rel="noopener" href="'+waLink(b.tel,rem)+'">תזכורת בוואטסאפ</a><button class="mv">שינוי</button><button class="cx warn">ביטול</button><button class="lc warn">ביטול בחיוב</button></div>';
-  var cx=d.querySelector('.cx'),lc=d.querySelector('.lc');
+  var tr=document.createElement('tr');tr.className='br';
+  tr.innerHTML='<td class="tm">'+key(b.start)+'<small>עד '+key(b.start+b.dur)+'</small></td><td><b>'+h(b.name)+'</b>'+(sm?'<span class="tag bad" title="'+h(b.sms_error||'')+'">ההודעה לא נשלחה</span>':got?'<span class="tag">קיבלה תזכורת</span>':'')+'</td><td>'+h(b.services.join(', '))+'</td><td><a class="wa" target="_blank" rel="noopener" href="'+waLink(b.tel,rem)+'" title="תזכורת בוואטסאפ">תזכורת</a></td>';
+  var dr=document.createElement('tr');dr.className='dr';dr.hidden=true;
+  dr.innerHTML='<td colspan="4"><div class="bk"><a class="rm" href="tel:'+h(b.tel)+'">'+h(b.tel)+'</a> · '+(b.from_price?'החל מ־':'')+b.price+' ₪'+(b.note?'<br><span style="color:var(--muted)">'+h(b.note)+'</span>':'')
+   +'<div class="acts"><button class="mv">שינוי</button><button class="cx warn">ביטול</button><button class="lc warn">ביטול בחיוב</button></div></div></td>';
+  tr.onclick=function(e){if(e.target.closest('a'))return;dr.hidden=!dr.hidden;tr.classList.toggle('open',!dr.hidden)};
+  var d=dr.querySelector('.bk'),cx=d.querySelector('.cx'),lc=d.querySelector('.lc');
   function arm(btn,label,late){if(btn.dataset.a){A_('/api/admin/bookings/'+b.id+'/cancel',{body:{late:late}}).then(function(){$('am').textContent='התור בוטל והשעה התפנתה';loadB();week.load()});return}btn.dataset.a=1;btn.textContent='לחצי שוב לאישור';setTimeout(function(){delete btn.dataset.a;btn.textContent=label},5000)}
   cx.onclick=function(){arm(cx,'ביטול',false)};lc.onclick=function(){arm(lc,'ביטול בחיוב',true)};
-  d.querySelector('.mv').onclick=function(){var f=document.createElement('div');f.innerHTML='<div class="row2"><input type="date" class="nd" value="'+b.date+'"><input type="time" class="nt" step="900" value="'+key(b.start)+'"></div><div class="acts"><button class="sv">שמירת השינוי</button><button class="cl">סגירה</button></div>';d.appendChild(f);
+  d.querySelector('.mv').onclick=function(){if(d.querySelector('.nd'))return;var f=document.createElement('div');f.innerHTML='<div class="row2"><input type="date" class="nd" value="'+b.date+'"><input type="time" class="nt" step="900" value="'+key(b.start)+'"></div><div class="acts"><button class="sv">שמירת השינוי</button><button class="cl">סגירה</button></div>';d.appendChild(f);
    f.querySelector('.cl').onclick=function(){f.remove()};
    f.querySelector('.sv').onclick=function(){var nd=f.querySelector('.nd').value,nt=f.querySelector('.nt').value.split(':');if(!nd||nt.length<2)return;A_('/api/admin/bookings/'+b.id+'/move',{body:{date:nd,start:+nt[0]*60+ +nt[1]}}).then(function(){$('am').textContent='התור עודכן. כדאי לעדכן את הלקוחה.';loadB();week.load()})}};
-  bl.appendChild(d)})})}
+  tb.appendChild(tr);tb.appendChild(dr)})})}
 function loadW(){A_('/api/admin/waitlist').then(function(j){var b=$('wlist');if(!b)return;$('wc').textContent=j.waitlist.length||'';b.innerHTML=j.waitlist.length?'':'<div class="hint">אין ממתינות</div>';
- j.waitlist.forEach(function(x){var d=document.createElement('div');d.className='bk';d.innerHTML='<b>'+dmy(x.date)+'</b> · '+h(x.name)+'<br>'+h(x.tel)+'<br>'+h(x.services.join(', '))+'<div class="acts"><a target="_blank" rel="noopener" href="'+waLink(x.tel,'שלום '+x.name+', התפנה מקום ב־'+dmy(x.date)+'. מתאים לך לקבוע?')+'">הודעה שהתפנה מקום</a><button>הסרה</button></div>';
+ j.waitlist.slice().sort(function(x,y){return x.date<y.date?-1:x.date>y.date?1:0}).forEach(function(x){var d=document.createElement('div');d.className='bk';d.innerHTML='<b>'+dmy(x.date)+'</b> · '+h(x.name)+'<br>'+h(x.tel)+'<br>'+h(x.services.join(', '))+'<div class="acts"><a target="_blank" rel="noopener" href="'+waLink(x.tel,'שלום '+x.name+', התפנה מקום ב־'+dmy(x.date)+'. מתאים לך לקבוע?')+'">הודעה שהתפנה מקום</a><button>הסרה</button></div>';
   d.querySelector('button').onclick=function(){A_('/api/admin/waitlist/'+x.id,{method:'DELETE'}).then(loadW)};b.appendChild(d)})})}
 function loadVac(){A_('/api/admin/vacations').then(function(j){var b=$('vl');if(!b)return;b.innerHTML='';VAC=j.vacations;week.render();
- j.vacations.forEach(function(v){var d=document.createElement('div');d.className='bk';d.innerHTML=dmy(v.from)+' עד '+dmy(v.to)+(v.note?' · '+h(v.note):'')+'<div class="acts"><button>הסרה</button></div>';d.querySelector('button').onclick=function(){A_('/api/admin/vacations/'+v.id,{method:'DELETE'}).then(loadVac)};b.appendChild(d)})})}
+ j.vacations.slice().sort(function(x,y){return x.from<y.from?-1:x.from>y.from?1:0}).forEach(function(v){var d=document.createElement('div');d.className='bk';d.innerHTML=dmy(v.from)+' עד '+dmy(v.to)+(v.note?' · '+h(v.note):'')+'<div class="acts"><button>הסרה</button></div>';d.querySelector('button').onclick=function(){A_('/api/admin/vacations/'+v.id,{method:'DELETE'}).then(loadVac)};b.appendChild(d)})})}
 function loadRev(){A_('/api/admin/reviews').then(function(j){var b=$('rp');if(!b)return;b.innerHTML='';var pend=j.reviews.filter(function(r){return!r.approved}).length;$('rc').textContent=pend?pend+' ממתינות':'';
  j.reviews.forEach(function(r){var d=document.createElement('div');d.className='bk';d.innerHTML=(r.approved?'':'<span class="tag bad">ממתינה לאישור</span><br>')+'<b>'+h(r.n)+'</b><br>'+h(r.t)+'<div class="acts">'+(r.approved?'':'<button class="ap">אישור ופרסום</button>')+'<button class="dl warn">מחיקה</button></div>';
   var ap=d.querySelector('.ap');if(ap)ap.onclick=function(){A_('/api/admin/reviews/'+r.id+'/approve',{body:{}}).then(loadRev)};
