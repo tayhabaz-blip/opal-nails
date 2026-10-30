@@ -130,12 +130,14 @@ body:not(.tm) #termsPg{display:none}body.tm>*:not(#termsPg):not(footer){display:
 .ws{display:grid;gap:6px;width:100%;margin-top:6px}
 .ws button{font:inherit;font-size:.74rem;font-weight:500;min-height:38px;padding:0;border:1.5px solid var(--rose);background:var(--rose2);color:var(--ink);border-radius:8px;cursor:pointer;touch-action:manipulation}
 .ws button.on{background:var(--rose);color:#fff;box-shadow:0 6px 14px var(--glow)}
-#adm .bt{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:.9rem;margin-top:6px}
+#adm .bt{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:.9rem;margin-top:10px}
+#adm .bt .c1{width:58px}#adm .bt .c2{width:28%}#adm .bt .c4{width:70px}#adm .bt .sv2{font-size:.82rem;line-height:1.45}
 #adm .bt th{font-weight:500;color:var(--muted);font-size:.78rem;text-align:start;padding:8px 10px;background:var(--bg);border-bottom:1px solid var(--line)}
-#adm .bt td{padding:10px;vertical-align:top;border-bottom:1px solid var(--line)}#adm .bt tr:last-child td{border-bottom:0}
+#adm .bt td{padding:10px 8px;vertical-align:middle;border-bottom:1px solid var(--line);overflow-wrap:anywhere}#adm .bt tr:last-child td{border-bottom:0}
+#adm .bt .dh td{background:var(--bg);color:var(--gold);font-weight:700;padding:9px 10px;border-top:2px solid var(--line)}#adm .bt .dh small{float:left;color:var(--muted);font-weight:400;font-size:.78rem}#adm .bt .dh.now td{color:var(--rose)}
 #adm .bt .br{cursor:pointer}#adm .bt .br.open td{background:var(--glow)}#adm .bt .tm{white-space:nowrap;font-weight:700;color:var(--rose)}#adm .bt .tm small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
-#adm .bt b{color:var(--ink)}#adm .bt .tag{display:block;width:max-content;margin-top:3px}#adm .bt .wa{display:inline-block;white-space:nowrap;font-size:.78rem;color:#fff;background:#25a35a;border-radius:10px;padding:7px 10px;text-decoration:none}
-#adm .bt .dr td{padding:0 8px 8px}#adm .bt .dr .bk{margin-top:0}#adm .day.now{color:var(--rose);font-weight:700}
+#adm .bt b{color:var(--ink)}#adm .bt .tag{display:block;width:max-content;max-width:100%;margin:3px 0 0;white-space:nowrap;font-size:.68rem;padding:1px 6px}#adm .bt .wa{display:inline-block;white-space:nowrap;font-size:.78rem;color:#fff;background:#25a35a;border-radius:10px;padding:7px 8px;text-decoration:none}
+#adm .bt .dr td{padding:0 8px 8px}#adm .bt .dr .bk{margin-top:0}
 </style>
 </head>
 <body>
@@ -404,13 +406,13 @@ function loadB(){A_('/api/admin/bookings').then(function(j){var bl=$('bl');if(!b
  var L=j.bookings.slice().sort(function(x,y){return x.date<y.date?-1:x.date>y.date?1:x.start-y.start});
  $('bc').textContent=L.length;bl.innerHTML=L.length?'':'<div class="hint">אין תורים קרובים</div>';var tb=null,last='',today=iso(new Date());
  L.forEach(function(b){
+  if(!tb){var t=document.createElement('table');t.className='bt';t.innerHTML='<colgroup><col class="c1"><col class="c2"><col><col class="c4"></colgroup><thead><tr><th>שעה</th><th>לקוחה</th><th>טיפול</th><th></th></tr></thead><tbody></tbody>';bl.appendChild(t);tb=t.tBodies[0]}
   if(b.date!=last){last=b.date;var n=L.filter(function(x){return x.date==b.date}).length;
-   var dh=document.createElement('div');dh.className='day'+(b.date==today?' now':'');dh.textContent=(b.date==today?'היום · ':'')+'יום '+DN[new Date(b.date+'T00:00:00').getDay()]+' '+dmy(b.date)+' · '+n+(n==1?' תור':' תורים');bl.appendChild(dh);
-   var t=document.createElement('table');t.className='bt';t.innerHTML='<thead><tr><th>שעה</th><th>לקוחה</th><th>טיפול</th><th></th></tr></thead><tbody></tbody>';bl.appendChild(t);tb=t.tBodies[0]}
+   var dh=document.createElement('tr');dh.className='dh'+(b.date==today?' now':'');dh.innerHTML='<td colspan="4"><span>'+(b.date==today?'היום · ':'')+'יום '+DN[new Date(b.date+'T00:00:00').getDay()]+' '+dmy(b.date)+'</span><small>'+n+(n==1?' תור':' תורים')+'</small></td>';tb.appendChild(dh)}
   var sm=b.confirm_sent=='failed'||b.reminder_sent=='failed',got=b.reminder_sent&&b.reminder_sent!='sending'&&!sm;
   var rem='שלום '+b.name+', תזכורת לתור שלך '+(b.date==today?'היום':'ב־'+dmy(b.date))+' בשעה '+key(b.start)+' ב־Nail Studio by Opal Ben Moha, אהרון בן יוסף 27 רמלה. חניה גדולה ממול. מחכים לך!';
   var tr=document.createElement('tr');tr.className='br';
-  tr.innerHTML='<td class="tm">'+key(b.start)+'<small>עד '+key(b.start+b.dur)+'</small></td><td><b>'+h(b.name)+'</b>'+(sm?'<span class="tag bad" title="'+h(b.sms_error||'')+'">ההודעה לא נשלחה</span>':got?'<span class="tag">קיבלה תזכורת</span>':'')+'</td><td>'+h(b.services.join(', '))+'</td><td><a class="wa" target="_blank" rel="noopener" href="'+waLink(b.tel,rem)+'" title="תזכורת בוואטסאפ">תזכורת</a></td>';
+  tr.innerHTML='<td class="tm">'+key(b.start)+'<small>עד '+key(b.start+b.dur)+'</small></td><td><b>'+h(b.name)+'</b>'+(sm?'<span class="tag bad" title="'+h(b.sms_error||'')+'">ההודעה לא נשלחה</span>':got?'<span class="tag">קיבלה תזכורת</span>':'')+'</td><td class="sv2">'+h(b.services.join(', '))+'</td><td><a class="wa" target="_blank" rel="noopener" href="'+waLink(b.tel,rem)+'" title="תזכורת בוואטסאפ">תזכורת</a></td>';
   var dr=document.createElement('tr');dr.className='dr';dr.hidden=true;
   dr.innerHTML='<td colspan="4"><div class="bk"><a class="rm" href="tel:'+h(b.tel)+'">'+h(b.tel)+'</a> · '+(b.from_price?'החל מ־':'')+b.price+' ₪'+(b.note?'<br><span style="color:var(--muted)">'+h(b.note)+'</span>':'')
    +'<div class="acts"><button class="mv">שינוי</button><button class="cx warn">ביטול</button><button class="lc warn">ביטול בחיוב</button></div></div></td>';
