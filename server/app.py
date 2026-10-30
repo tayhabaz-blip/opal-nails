@@ -41,6 +41,7 @@ ALLOWED_ORIGINS = [o.strip() for o in os.environ.get(
 REMINDER_HOUR = int(os.environ.get("REMINDER_HOUR", "7"))  # reminders go out from this hour on the day of the booking
 STUDIO = "Nail Studio by Opal Ben Moha"
 ADDRESS = "אהרון בן יוסף 27, רמלה"
+SITE_URL = os.environ.get("SITE_URL", "https://opal-nails.onrender.com").rstrip("/")
 
 STEP = 15          # slot grid, minutes
 MAX_DAYS_AHEAD = 365
@@ -132,6 +133,9 @@ def init_db():
         CREATE TABLE IF NOT EXISTS gallery(id TEXT PRIMARY KEY, cat TEXT, created_at TEXT);
         """)
         c.execute("INSERT OR IGNORE INTO settings VALUES('hours', ?)", (json.dumps(DEFAULT_HOURS),))
+        cols = {r["name"] for r in c.execute("PRAGMA table_info(bookings)")}
+        if "k" not in cols:  # secret that lets the customer see her own booking
+            c.execute("ALTER TABLE bookings ADD COLUMN k TEXT")
     finally:
         c.close()
 
@@ -300,10 +304,16 @@ def ddmm(ds):
     return f"{d}/{m}/{y}"
 
 
+def my_link(b):
+    return f"{SITE_URL}/#t={b['id']}.{b['k']}" if b.get("k") else ""
+
+
 def confirm_text(b):
+    link = my_link(b)
     return (f"שלום {b['name']}, התור שלך ב-{STUDIO} נקבע ואושר: "
             f"{ddmm(b['date'])} בשעה {hhmm(b['start'])}. {ADDRESS}, חניה גדולה ממול. "
-            f"לשינוי או ביטול יש לפנות לסטודיו לפחות 24 שעות מראש.")
+            + (f"התור שלך באתר: {link} " if link else "")
+            + "לשינוי או ביטול יש לפנות לסטודיו לפחות 24 שעות מראש.")
 
 
 def reminder_text(b):
@@ -447,6 +457,7 @@ async def create_booking(b: BookingIn, req: Request):
     if b.start % STEP:
         raise HTTPException(400, "שעה לא תקינה")
     bid = new_id("b")
+    bkey = secrets.token_urlsafe(9)
     with tx() as c:
         oc = day_open(c, d)
         if not oc:
@@ -457,12 +468,41 @@ async def create_booking(b: BookingIn, req: Request):
             raise HTTPException(409, "השעה הזו כבר עברה")
         if overlaps(busy(c, d.isoformat()), b.start, b.start + dur):
             raise HTTPException(409, "מצטערים, השעה הזו כבר נתפסה. נא לבחור שעה אחרת.")
-        c.execute("INSERT INTO bookings(id,name,tel,note,services,date,start,dur,price,from_price,created_at)"
-                  " VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+        c.execute("INSERT INTO bookings(id,name,tel,note,services,date,start,dur,price,from_price,created_at,k)"
+                  " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
                   (bid, name, tel, clean(b.note, 400), json.dumps([SERVICES[s]["name"] for s in svc], ensure_ascii=False),
-                   d.isoformat(), b.start, dur, price, frm, now.isoformat(timespec="seconds")))
+                   d.isoformat(), b.start, dur, price, frm, now.isoformat(timespec="seconds"), bkey))
     asyncio.get_running_loop().run_in_executor(None, send_and_mark, bid, "confirm")
-    return {"id": bid, "date": d.isoformat(), "start": b.start, "dur": dur, "price": price, "from": frm}
+    return {"id": bid, "k": bkey, "date": d.isoformat(), "start": b.start, "dur": dur, "price": price, "from": frm}
+
+
+class MyItem(BaseModel):
+    id: str = Field(max_length=20)
+    k: str = Field(max_length=40)
+
+
+class MyIn(BaseModel):
+    items: list[MyItem] = Field(max_length=20)
+
+
+@app.post("/api/my")
+def my_bookings(x: MyIn, req: Request):
+    """The customer's own bookings. Each one is shown only with the secret the
+    customer got when she booked, so nobody can look up someone else's booking."""
+    limit(req, "my", 60, 3600)
+    out = []
+    c = read()
+    try:
+        for it in x.items:
+            r = c.execute("SELECT * FROM bookings WHERE id=?", (it.id,)).fetchone()
+            if not r or not r["k"] or not hmac.compare_digest(r["k"], it.k):
+                continue
+            out.append({"id": r["id"], "k": r["k"], "name": r["name"], "services": json.loads(r["services"]),
+                        "date": r["date"], "start": r["start"], "dur": r["dur"], "price": r["price"],
+                        "from": r["from_price"], "status": "active" if r["status"] == "active" else "cancelled"})
+        return {"bookings": out, "today": today_il()}
+    finally:
+        c.close()
 
 
 class WaitIn(BaseModel):
