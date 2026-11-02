@@ -273,7 +273,7 @@ var week=(function(){
   var hr=HOURS[d.getDay()],now=new Date(),nm=now.getHours()*60+now.getMinutes(),ti=iso(base),out=[],past=0;
   if(!hr||di<ti||VAC.some(function(v){return di>=v.from&&di<=v.to}))return null;
   var bz=ONLINE?busy[di]:[];if(!bz)return'?';
-  for(var m=hr[0]*60;m+t.d<=hr[1]*60;m+=STEP){if(di==ti&&m<=nm){past++;continue}var e=m+t.d;if(bz.some(function(r){return m<r[1]&&r[0]<e}))continue;out.push(m)}
+  for(var m=hr[0]*60;m<=hr[1]*60;m+=STEP){if(di==ti&&m<=nm){past++;continue}var e=m+t.d;if(bz.some(function(r){return m<r[1]&&r[0]<e}))continue;out.push(m)}
   return out.length||!past?out:null}
  function render(){
   var t=tot(),ti=iso(base),g=$('wkg'),html='',mid=addd(ws,3);mo.value=mid.getFullYear()+'-'+mid.getMonth();

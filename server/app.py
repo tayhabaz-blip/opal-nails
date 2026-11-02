@@ -466,7 +466,7 @@ async def create_booking(b: BookingIn, req: Request):
         oc = day_open(c, d)
         if not oc:
             raise HTTPException(409, "הסטודיו סגור ביום הזה")
-        if b.start < oc[0] or b.start + dur > oc[1]:
+        if b.start < oc[0] or b.start > oc[1]:  # closing hour = latest start time
             raise HTTPException(409, "השעה מחוץ לשעות הפעילות")
         if d == now.date() and b.start <= now.hour * 60 + now.minute:
             raise HTTPException(409, "השעה הזו כבר עברה")
