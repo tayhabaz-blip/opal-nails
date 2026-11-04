@@ -328,6 +328,10 @@ def send_and_mark(bid, kind):
     c.close()
     if not b or b["status"] != "active":
         return
+    if not sms.real():
+        # No SMS provider: nothing would reach the customer, so the booking is not marked.
+        # Otherwise the panel shows "got a reminder" and Opal skips the WhatsApp one.
+        return
     b = dict(b)
     col = "confirm_sent" if kind == "confirm" else "reminder_sent"
     with tx() as w:
@@ -409,7 +413,7 @@ def public():
             "gallery": [dict(r) for r in c.execute("SELECT id, cat FROM gallery ORDER BY created_at DESC")],
             "services": SERVICES,
             "today": today_il(),
-            "sms": os.environ.get("SMS_PROVIDER", "log") != "log",
+            "sms": sms.real(),
         }
     finally:
         c.close()
@@ -619,6 +623,8 @@ def admin_move(bid: str, x: MoveIn):
         b = c.execute("SELECT * FROM bookings WHERE id=? AND status='active'", (bid,)).fetchone()
         if not b:
             raise HTTPException(404, "התור לא נמצא")
+        if x.start + b["dur"] > 24 * 60:
+            raise HTTPException(400, "התור חייב להסתיים באותו יום")
         if overlaps(busy(c, d.isoformat(), exclude=bid), x.start, x.start + b["dur"]):
             raise HTTPException(409, "השעה החדשה תפוסה")
         same_day = b["date"] == d.isoformat()

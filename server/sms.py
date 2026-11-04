@@ -43,5 +43,10 @@ def _twilio(tel, text):
 PROVIDERS = {"log": _log, "twilio": _twilio}
 
 
+def real() -> bool:
+    """True when messages really reach the customer's phone."""
+    return os.environ.get("SMS_PROVIDER", "log") != "log"
+
+
 def send(tel: str, text: str):
     PROVIDERS[os.environ.get("SMS_PROVIDER", "log")](tel, text)
