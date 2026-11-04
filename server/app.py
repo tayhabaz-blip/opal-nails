@@ -522,6 +522,8 @@ def join_waitlist(w: WaitIn, req: Request):
     name = clean_name(w.name)
     tel = norm_tel(w.tel)
     d = parse_day(w.date)
+    if d < now_il().date():
+        raise HTTPException(400, "התאריך כבר עבר")
     svc = [s for s in dict.fromkeys(w.services) if s in SERVICES]
     with tx() as c:
         c.execute("INSERT INTO waitlist VALUES(?,?,?,?,?,?,?)",
@@ -585,12 +587,85 @@ def booking_out(r):
 
 
 @app.get("/api/admin/bookings", dependencies=[Depends(admin)])
-def admin_bookings():
+def admin_bookings(start: str = "", days: int = 0):
+    """Without start: every active booking from today on. With start: the active
+    bookings of that range (past days included), for the weekly calendar."""
     c = read()
     try:
-        rows = c.execute("SELECT * FROM bookings WHERE date>=? AND status='active' ORDER BY date, start",
-                         (today_il(),)).fetchall()
-        return {"bookings": [booking_out(r) for r in rows]}
+        if start:
+            d0 = parse_day(start)
+            d1 = d0 + timedelta(max(1, min(days or 7, 42)) - 1)
+            rows = c.execute("SELECT * FROM bookings WHERE date BETWEEN ? AND ? AND status='active' ORDER BY date, start",
+                             (d0.isoformat(), d1.isoformat())).fetchall()
+        else:
+            rows = c.execute("SELECT * FROM bookings WHERE date>=? AND status='active' ORDER BY date, start",
+                             (today_il(),)).fetchall()
+        return {"bookings": [booking_out(r) for r in rows], "today": today_il()}
+    finally:
+        c.close()
+
+
+class AdminBookingIn(BaseModel):
+    name: str = Field(max_length=80)
+    tel: str = Field(max_length=20)
+    note: str = Field(default="", max_length=500)
+    services: list[str] = Field(max_length=7)
+    date: str
+    start: int
+
+
+@app.post("/api/admin/bookings", dependencies=[Depends(admin)])
+def admin_add_booking(b: AdminBookingIn):
+    """Opal books a customer who called or wrote. She may book outside the opening
+    hours or on a past day, but never on top of another booking."""
+    name = clean_name(b.name)
+    tel = norm_tel(b.tel)
+    svc = list(dict.fromkeys(b.services))
+    if not svc or any(s not in SERVICES for s in svc):
+        raise HTTPException(400, "נא לבחור לפחות טיפול אחד")
+    d = parse_day(b.date)
+    dur = sum(SERVICES[s]["d"] for s in svc)
+    if not (0 <= b.start < 24 * 60) or b.start % 5:
+        raise HTTPException(400, "שעה לא תקינה")
+    if b.start + dur > 24 * 60:
+        raise HTTPException(400, "התור חייב להסתיים באותו יום")
+    bid, bkey = new_id("b"), secrets.token_urlsafe(9)
+    with tx() as c:
+        if overlaps(busy(c, d.isoformat()), b.start, b.start + dur):
+            raise HTTPException(409, "יש כבר תור בשעה הזו")
+        c.execute("INSERT INTO bookings(id,name,tel,note,services,date,start,dur,price,from_price,created_at,k)"
+                  " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                  (bid, name, tel, clean(b.note, 400), json.dumps([SERVICES[s]["name"] for s in svc], ensure_ascii=False),
+                   d.isoformat(), b.start, dur, sum(SERVICES[s]["p"] for s in svc),
+                   int(any(SERVICES[s]["f"] for s in svc)), now_il().isoformat(timespec="seconds"), bkey))
+        r = c.execute("SELECT * FROM bookings WHERE id=?", (bid,)).fetchone()
+    out = booking_out(r)
+    out["link"] = my_link(out)
+    return out
+
+
+@app.get("/api/admin/customers", dependencies=[Depends(admin)])
+def admin_customers(q: str = ""):
+    """Earlier customers whose phone or name matches, newest visit first, so Opal
+    does not retype a regular customer's details."""
+    q = clean(q, 40)
+    digits = re.sub(r"\D", "", q)
+    if len(digits) < 3 and len(q) < 2:
+        return {"customers": []}
+    c = read()
+    try:
+        rows = c.execute(
+            "SELECT tel, name, MAX(date) AS last, COUNT(*) AS n FROM bookings"
+            " WHERE status!='cancelled' AND (replace(replace(tel,'-',''),' ','') LIKE ? OR name LIKE ?)"
+            " GROUP BY tel ORDER BY last DESC LIMIT 6",
+            (f"%{digits}%" if len(digits) >= 3 else "\x00", f"%{q}%" if len(q) >= 2 else "\x00")).fetchall()
+        out = []
+        for r in rows:
+            last = c.execute("SELECT name, services FROM bookings WHERE tel=? AND status!='cancelled' ORDER BY date DESC, start DESC LIMIT 1",
+                             (r["tel"],)).fetchone()
+            out.append({"tel": r["tel"], "name": last["name"], "last": r["last"], "n": r["n"],
+                        "services": json.loads(last["services"])})
+        return {"customers": out}
     finally:
         c.close()
 

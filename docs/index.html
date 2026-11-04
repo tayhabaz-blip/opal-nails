@@ -131,14 +131,6 @@ body:not(.tm) #termsPg{display:none}body.tm>*:not(#termsPg):not(footer){display:
 .ws{display:grid;gap:6px;width:100%;margin-top:6px}
 .ws button{font:inherit;font-size:.74rem;font-weight:500;min-height:38px;padding:0;border:1.5px solid var(--rose);background:var(--rose2);color:var(--ink);border-radius:8px;cursor:pointer;touch-action:manipulation}
 .ws button.on{background:var(--rose);color:#fff;box-shadow:0 6px 14px var(--glow)}
-#adm .bt{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:.9rem;margin-top:10px}
-#adm .bt .c1{width:58px}#adm .bt .c2{width:28%}#adm .bt .c4{width:70px}#adm .bt .sv2{font-size:.82rem;line-height:1.45}
-#adm .bt th{font-weight:500;color:var(--muted);font-size:.78rem;text-align:start;padding:8px 10px;background:var(--bg);border-bottom:1px solid var(--line)}
-#adm .bt td{padding:10px 8px;vertical-align:middle;border-bottom:1px solid var(--line);overflow-wrap:anywhere}#adm .bt tr:last-child td{border-bottom:0}
-#adm .bt .dh td{background:var(--bg);color:var(--gold);font-weight:700;padding:9px 10px;border-top:2px solid var(--line)}#adm .bt .dh small{float:left;color:var(--muted);font-weight:400;font-size:.78rem}#adm .bt .dh.now td{color:var(--rose)}
-#adm .bt .br{cursor:pointer}#adm .bt .br.open td{background:var(--glow)}#adm .bt .tm{white-space:nowrap;font-weight:700;color:var(--rose)}#adm .bt .tm small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
-#adm .bt b{color:var(--ink)}#adm .bt .tag{display:block;width:max-content;max-width:100%;margin:3px 0 0;white-space:nowrap;font-size:.68rem;padding:1px 6px}#adm .bt .wa{display:inline-block;white-space:nowrap;font-size:.78rem;color:#fff;background:#25a35a;border-radius:10px;padding:7px 8px;text-decoration:none}
-#adm .bt .dr td{padding:0 8px 8px}#adm .bt .dr .bk{margin-top:0}
 </style>
 </head>
 <body>
@@ -197,24 +189,65 @@ body:not(.tm) #termsPg{display:none}body.tm>*:not(#termsPg):not(footer){display:
 .noimg{display:none!important}
 .cover .cv.noimg+.logo{margin-top:28px}.cover .logo{padding:6px}
 .ic.ph.noimg{display:grid!important}.ic.ph.noimg img{display:none}
-#adm{max-width:760px;margin:0 auto;padding:28px 16px}
+#adm{max-width:1100px;margin:0 auto;padding:18px 14px 110px}
 #adm .card2 h3{margin-bottom:10px}
-#adm details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}
-#adm summary{min-height:32px;display:flex;align-items:center;gap:8px}
-#adm input,#adm select,#adm textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px}
-#adm .btn{width:100%;margin-top:10px;padding:12px 18px}
-#adm .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-#adm .bk{overflow:hidden}
-#adm .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-#adm .acts button,#adm .acts a{font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:9px 12px;min-height:40px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
-#adm .acts .warn{color:#b3365b;border-color:#f0b6c8}
-#adm .tag{display:inline-block;font-size:.72rem;border-radius:8px;padding:2px 8px;margin-inline-start:6px;background:var(--bg);color:var(--muted)}
-#adm .tag.bad{background:#fde3ea;color:#b3365b}#adm .tag:empty{display:none}
-#adm .day{margin:18px 0 6px;color:var(--gold);font-weight:500}
+#adm input,#adm select,#adm textarea{min-height:48px;width:100%;min-width:0;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;box-sizing:border-box}
+#adm label{display:block;font-size:.92rem;color:var(--muted);margin-top:10px}#adm label input,#adm label select{margin-top:4px}
+#adm .row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
 #adm .msg{min-height:1.4em;text-align:center;color:var(--rose);font-size:.9rem}
-#adm .gg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+#adm .ah{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}#adm .ah h2{font-size:1.6rem;margin:0}#adm .ah .rm{margin:0;display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+#adm .atabs{position:sticky;top:0;z-index:6;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;background:var(--bg);padding:6px 0 10px}
+#adm .atabs button{font:inherit;font-size:1rem;white-space:nowrap;min-height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;padding:0 4px}
+#adm .atabs button.on{background:#c2457a;border-color:#c2457a;color:#fff;font-weight:700}
+#adm .cnt:empty{display:none}#adm .cnt{display:inline-block;min-width:22px;border-radius:999px;background:#fde3ea;color:#8c2b55;font-size:.8rem;font-weight:700;padding:1px 6px;margin-inline-start:4px}#adm .on .cnt{background:#fff}
+#adm .acard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px}#adm .acard h3{margin:0 0 6px;font-size:1.2rem}#adm .acard p{margin:4px 0}
+#adm .sm{color:var(--muted);font-size:.9rem}#adm .big{font-size:1.08rem;font-weight:500;color:var(--ink)}#adm .note{background:var(--bg);border-radius:10px;padding:8px 10px;color:var(--muted)}
+#adm .tag{display:inline-block;font-size:.78rem;border-radius:8px;padding:2px 8px;margin-bottom:6px;background:var(--bg);color:var(--muted)}#adm .tag.bad{background:#fde3ea;color:#a3264f}
+.sact{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:12px}
+.sb{font:inherit;font-size:1rem;font-weight:500;min-height:50px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px 10px}
+.sb.wa{background:#1a7a43;border-color:#1a7a43;color:#fff}.sb.warn{color:#a3264f;border-color:#f0b6c8}.sb:disabled{opacity:.6}
+#adm .wbar{display:flex;align-items:center;gap:8px;margin-bottom:10px}#adm .wbar b{flex:1;text-align:center;font-size:1.15rem}
+#adm .wb,#adm .wt{font:inherit;min-width:48px;min-height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:1.3rem}#adm .wt{font-size:1rem;padding:0 14px}
+.wg{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:clip}
+#adm section{padding:0;max-width:none;margin:0}
+.wh,.wb2{display:grid;gap:0}
+.wh{position:sticky;top:64px;z-index:4;background:var(--surface);border-bottom:1px solid var(--line)}
+.wh>div{display:flex;flex-direction:column;align-items:center;padding:8px 2px;line-height:1.25;min-width:0}.wh b{font-size:.92rem}.wh span{font-size:.82rem;color:var(--muted)}.wh small{font-size:.7rem;color:#8c2b55;white-space:nowrap}
+.wh .td{background:#fde3ea;border-radius:12px}.wh .td span{color:#8c2b55}
+.wtimes{position:relative}.wtimes span{position:absolute;inset-inline:0;text-align:center;font-size:.7rem;color:var(--muted);transform:translateY(-1px);padding-top:2px}
+.wcol{position:relative;border-inline-start:1px solid var(--line);background-image:linear-gradient(to bottom,var(--line) 1px,transparent 1px);cursor:copy;min-width:0}
+.wcol.td{background-color:#fff7fa}.wcol.past{background-color:#faf6f7}
+.wcol .off{position:absolute;inset-inline:0;background:repeating-linear-gradient(135deg,#f1e8eb 0 6px,#f8f1f3 6px 12px);display:flex;align-items:center;justify-content:center;pointer-events:none}.wcol .off span{font-size:.75rem;color:#6e4f58;writing-mode:vertical-rl}
+.nowl{position:absolute;inset-inline:0;height:2px;background:#a3264f;z-index:2}
+.ev{position:absolute;inset-inline:2px;z-index:1;font:inherit;text-align:start;border:0;border-radius:8px;background:#f4b3c9;color:#4b1528;padding:3px 5px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;gap:1px;line-height:1.2}
+.ev b{font-size:.78rem;overflow-wrap:anywhere;max-width:100%;line-height:1.15}.ev span{font-size:.7rem}.ev.sm{flex-direction:row;gap:4px;align-items:center}.ev.sm span{display:none}
+.wcol.past .ev{background:#ead7de;color:#5c434a}
+@media(max-width:420px){#adm .atabs button{font-size:.92rem}#adm .cnt{min-width:18px;padding:0 4px}}
+@media(min-width:700px){.ev b{font-size:.9rem}.ev span{font-size:.8rem}.ev.sm span{display:inline}}
+.wsum{text-align:center;font-weight:700;color:#8c2b55;margin:12px 0 2px}.whint{text-align:center;color:var(--muted);font-size:.88rem;margin:0}
+.fab{position:fixed;left:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:8;font:inherit;font-size:1.08rem;font-weight:700;min-height:56px;padding:0 22px;border:0;border-radius:999px;background:#c2457a;color:#fff;box-shadow:0 8px 22px rgba(194,69,122,.35);cursor:pointer}.fab span{font-size:1.4rem;margin-inline-end:4px}
+.sbg{position:fixed;inset:0;z-index:20;background:rgba(43,29,34,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);width:100%;max-width:620px;max-height:92vh;max-height:92dvh;overflow:auto;border-radius:24px 24px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px));box-sizing:border-box}
+@media(min-width:700px){.sbg{align-items:center}.sheet{border-radius:24px}}
+.shh{display:flex;justify-content:space-between;align-items:center;gap:10px}.shh h3{margin:0;font-size:1.4rem;outline:0}
+.shh .x{font:inherit;width:48px;height:48px;border-radius:14px;border:0;background:var(--bg);color:var(--ink);font-size:1.1rem;cursor:pointer;flex:none}
+.sheet p{margin:6px 0}.sheet .big{font-size:1.08rem;font-weight:500}.sheet .note{background:var(--bg);border-radius:10px;padding:8px 10px;color:var(--muted)}.sheet .ok2{color:#1a5e36;font-weight:500}
+.sheet label{display:block;font-size:.92rem;color:var(--muted);margin-top:12px}
+.sheet input{width:100%;min-width:0;box-sizing:border-box;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;margin-top:4px;min-height:48px}
+.sheet .row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.sheet .btn{width:100%;margin-top:14px;min-height:52px;font-size:1.05rem}.sheet .btn.o{background:var(--surface);color:var(--rose);border:1.5px solid var(--rose2);box-shadow:none}
+.sheet .lbl{font-size:.92rem;color:var(--muted);margin-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.chips button{font:inherit;font-size:.92rem;min-height:44px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}.chips button.on{background:#c2457a;border-color:#c2457a;color:#fff}
+.sug{display:block;width:100%;text-align:start;font:inherit;background:#fff2f6;border:0;border-radius:12px;padding:10px 12px;margin-top:6px;cursor:pointer;color:var(--ink)}.sug b{display:block}.sug span{font-size:.85rem;color:var(--muted)}
+.nsum{color:#8c2b55;font-weight:500;min-height:1.3em;margin-top:12px!important}
+.toast{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));transform:translate(-50%,-20px);z-index:30;background:#2b1d22;color:#fff;border-radius:14px;padding:12px 18px;font-size:.98rem;max-width:min(92vw,520px);text-align:center;opacity:0;pointer-events:none;transition:.25s}
+.toast.on{opacity:1;transform:translate(-50%,0)}.toast.bad{background:#a3264f}
+body.noscr{overflow:hidden}
+#adm .hr2{display:grid;grid-template-columns:56px minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:center;margin-top:8px}#adm .hr2 span{font-size:.95rem;text-align:center}#adm .hr2 span:first-child{text-align:start;font-weight:500}
+#adm .vrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}#adm .vrow .sb{min-width:90px}
+#adm .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-top:10px}
 #adm .gg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;cursor:pointer}
-#adm .gg img.arm{outline:3px solid #d6648c}
+#adm .gg img.arm{outline:4px solid #a3264f}
 body.admin>*:not(#adm):not(script){display:none!important}
 .offline{background:#fff7e6;border:1px solid #f3d9a4;color:#7a5a1c;border-radius:14px;padding:10px 14px;font-size:.88rem;margin:0 0 14px;text-align:center}
 </style>
@@ -417,72 +450,144 @@ function adminLogin(){
  A.innerHTML='<div class="card2"><h3>כניסה לניהול</h3><input type="password" id="apw" placeholder="סיסמה" autocomplete="current-password"><div class="msg" id="am"></div><button class="btn" id="ago">כניסה</button></div><p style="text-align:center"><a class="rm" href="#">חזרה לאתר</a></p>';
  function go(){$('ago').disabled=true;api('/api/admin/login',{body:{password:$('apw').value}}).then(function(j){saveTok(j.token);adminPanel()},function(x){$('ago').disabled=false;$('am').textContent=x.message})}
  $('ago').onclick=go;$('apw').onkeydown=function(e){if(e.key=='Enter')go()}}
-function aerr(x){if(x.status===401){saveTok(null);adminLogin();return}var m=$('am');if(m)m.textContent=x.message}
 function A_(path,opt){opt=opt||{};opt.auth=true;return api(path,opt).catch(function(x){aerr(x);throw x})}
 function waLink(tel,text){var p=String(tel).replace(/\D/g,'');if(p.charAt(0)=='0')p='972'+p.slice(1);return'https://wa.me/'+p+'?text='+encodeURIComponent(text)}
 
-function adminPanel(){
- var hrs='',op='';for(var x=6;x<=22;x++)op+='<option>'+x+'</option>';
- for(var i=0;i<7;i++)hrs+='<div class="hr"><span>'+DN[i]+'</span><select data-i="'+i+'" data-k="o"><option value="">סגור</option>'+op+'</select><span style="text-align:center">עד</span><select data-i="'+i+'" data-k="c"><option value="">-</option>'+op+'</select></div>';
- A.innerHTML='<div class="sec-h" style="margin-bottom:14px"><h2 style="font-size:1.7rem">ניהול הסטודיו</h2></div><div class="msg" id="am"></div>'
- +'<details open><summary>התורים הקרובים <span class="tag" id="bc"></span></summary><div id="bl"></div></details>'
- +'<details><summary>רשימת המתנה <span class="tag" id="wc"></span></summary><div id="wlist"></div></details>'
- +'<details><summary>שעות עבודה</summary>'+hrs+'<button class="btn" id="hs">שמירת שעות</button></details>'
- +'<details><summary>חופשות וימים סגורים</summary><div class="row2"><label>מתאריך<input type="date" id="vf"></label><label>עד תאריך<input type="date" id="vt"></label></div><input id="vn" placeholder="הערה (לא חובה)" style="margin-top:8px"><button class="btn" id="vs">חסימת התאריכים</button><div id="vl"></div></details>'
- +'<details><summary>המלצות <span class="tag" id="rc"></span></summary><div id="rp"></div><p style="color:var(--muted);font-size:.85rem;margin:12px 0 6px">הוספת המלצה ידנית (רק באישור הלקוחה)</p><input id="rn" placeholder="שם הלקוחה"><textarea id="rt" placeholder="ההמלצה" style="margin-top:8px"></textarea><button class="btn" id="rs">הוספה</button></details>'
- +'<details><summary>גלריה</summary><select id="gc">'+CATS.map(function(c){return'<option>'+c+'</option>'}).join('')+'</select><label class="btn" style="text-align:center;cursor:pointer">העלאת תמונות<input type="file" id="gf" accept="image/*" multiple hidden></label><p style="color:var(--muted);font-size:.82rem">למחיקה: לוחצים על תמונה, ואז לוחצים עליה שוב.</p><div class="gg" id="gg"></div></details>'
- +'<p style="text-align:center;margin-top:18px"><a class="rm" href="#">לאתר</a> · <a class="rm" href="#admin" id="lo">יציאה</a></p>';
- // השעות נטענות מהשרת לפני שאפשר לשמור, אחרת שמירה דורסת את השעות האמיתיות בשעות ברירת המחדל
- function fillH(){A.querySelectorAll('select[data-i]').forEach(function(s){var v=HOURS[s.dataset.i];s.value=v?v[s.dataset.k=='o'?0:1]:''})}
- fillH();$('hs').disabled=true;api('/api/public').then(function(j){HOURS=j.hours;fillH();if($('hs'))$('hs').disabled=false},function(){var m=$('am');if(m)m.textContent='לא ניתן לטעון את שעות העבודה כרגע'});
- $('lo').onclick=function(e){e.preventDefault();saveTok(null);adminLogin()};
- $('hs').onclick=function(){var o={};A.querySelectorAll('select[data-k=o]').forEach(function(s){var i=s.dataset.i,c=A.querySelector('select[data-k=c][data-i="'+i+'"]').value;if(s.value&&c&&+c>+s.value)o[i]=[+s.value,+c]});
-  A_('/api/admin/hours',{method:'PUT',body:{h:o}}).then(function(j){HOURS=j.hours;info();$('am').textContent='השעות נשמרו'})};
- $('vs').onclick=function(){var f=$('vf').value,t=$('vt').value||f;if(!f){$('am').textContent='נא לבחור תאריך';return}
-  A_('/api/admin/vacations',{body:{from:f,to:t,note:$('vn').value}}).then(function(j){$('vf').value=$('vt').value=$('vn').value='';$('am').textContent=j.existing_bookings?'נחסם. שימי לב: יש '+j.existing_bookings+' תורים קיימים בתאריכים האלה, הם לא בוטלו.':'התאריכים נחסמו';loadVac()})};
- $('rs').onclick=function(){var n=$('rn').value.trim(),t=$('rt').value.trim();if(!n||!t)return;A_('/api/admin/reviews',{body:{n:n,t:t}}).then(function(){$('rn').value=$('rt').value='';loadRev()})};
- $('gf').onchange=function(){var fs=[].slice.call(this.files),cat=$('gc').value,inp=this,k=0,bad=0,why='';$('am').textContent='מעלה '+fs.length+' תמונות…';
-  (function next(){if(k>=fs.length){inp.value='';$('am').textContent=bad?(bad==fs.length?'התמונות לא עלו':(fs.length-bad)+' תמונות עלו, '+bad+' לא עלו')+(why?': '+why:''):'התמונות עלו';loadGal();return}
-   var fd=new FormData();fd.append('cat',cat);fd.append('file',fs[k++]);A_('/api/admin/gallery',{body:fd,timeout:60000}).then(next,function(x){bad++;why=x.message;if(x.status!==401)next()})})()};
- loadB();loadW();loadVac();loadRev();loadGal();clearInterval(aTimer);aTimer=setInterval(function(){
-  // לא מרעננים בזמן שאופל באמצע פעולה על תור (פתוח, שינוי שעה או ביטול שממתין לאישור)
-  if(location.hash=='#admin'&&TOKEN&&!document.querySelector('#bl tr.br.open,#bl .nd,#bl [data-a]'))loadB()},60000)}
+// ---------- פאנל הניהול: יומן שבועי, תור חדש, ממתינות, המלצות, הגדרות
+var SV=Array.prototype.map.call(boxes,function(b){return{id:b.dataset.id,n:b.value,d:+b.dataset.d,p:+b.dataset.p,f:b.dataset.f=='1'}});
+var AW={ws:sun(new Date()),list:[],today:iso(new Date()),tab:'cal'},SHEET=null;
+function msg(t,bad){var m=$('am');if(!m)return;m.textContent=t;m.className='toast on'+(bad?' bad':'');clearTimeout(msg.t);msg.t=setTimeout(function(){m.className='toast'},bad?6000:3500)}
+function aerr(x){if(x.status===401){saveTok(null);adminLogin();return}msg(x.message,true)}
+function dayName(ds){return'יום '+DN[new Date(ds+'T00:00:00').getDay()]+' '+dmy(ds)}
+function confirmText(b){return'שלום '+b.name+', התור שלך ב-Nail Studio by Opal Ben Moha נקבע ואושר: '+dmy(b.date)+' בשעה '+key(b.start)+'. אהרון בן יוסף 27, רמלה, חניה גדולה ממול. '+(b.link?'התור שלך באתר: '+b.link+' ':'')+'לשינוי או ביטול יש לפנות לסטודיו לפחות 24 שעות מראש.'}
+function remindText(b){return'שלום '+b.name+', תזכורת לתור שלך '+(b.date==AW.today?'היום':'ב־'+dmy(b.date))+' בשעה '+key(b.start)+' ב־Nail Studio by Opal Ben Moha, אהרון בן יוסף 27 רמלה. חניה גדולה ממול. מחכים לך!'}
 
-function loadB(){A_('/api/admin/bookings').then(function(j){var bl=$('bl');if(!bl)return;
- // מיון בצד הדפדפן לפי תאריך ושעה, גם אם השרת מחזיר בסדר אחר
- var L=j.bookings.slice().sort(function(x,y){return x.date<y.date?-1:x.date>y.date?1:x.start-y.start});
- $('bc').textContent=L.length;bl.innerHTML=L.length?'':'<div class="hint">אין תורים קרובים</div>';var tb=null,last='',today=iso(new Date());
- L.forEach(function(b){
-  if(!tb){var t=document.createElement('table');t.className='bt';t.innerHTML='<colgroup><col class="c1"><col class="c2"><col><col class="c4"></colgroup><thead><tr><th>שעה</th><th>לקוחה</th><th>טיפול</th><th></th></tr></thead><tbody></tbody>';bl.appendChild(t);tb=t.tBodies[0]}
-  if(b.date!=last){last=b.date;var n=L.filter(function(x){return x.date==b.date}).length;
-   var dh=document.createElement('tr');dh.className='dh'+(b.date==today?' now':'');dh.innerHTML='<td colspan="4"><span>'+(b.date==today?'היום · ':'')+'יום '+DN[new Date(b.date+'T00:00:00').getDay()]+' '+dmy(b.date)+'</span><small>'+n+(n==1?' תור':' תורים')+'</small></td>';tb.appendChild(dh)}
-  var sm=SMS&&(b.confirm_sent=='failed'||b.reminder_sent=='failed'),got=SMS&&b.reminder_sent&&b.reminder_sent!='sending'&&!sm;
-  var rem='שלום '+b.name+', תזכורת לתור שלך '+(b.date==today?'היום':'ב־'+dmy(b.date))+' בשעה '+key(b.start)+' ב־Nail Studio by Opal Ben Moha, אהרון בן יוסף 27 רמלה. חניה גדולה ממול. מחכים לך!';
-  var tr=document.createElement('tr');tr.className='br';
-  tr.innerHTML='<td class="tm">'+key(b.start)+'<small>עד '+key(b.start+b.dur)+'</small></td><td><b>'+h(b.name)+'</b>'+(sm?'<span class="tag bad" title="'+h(b.sms_error||'')+'">ההודעה לא נשלחה</span>':got?'<span class="tag">קיבלה תזכורת</span>':'')+'</td><td class="sv2">'+h(b.services.join(', '))+'</td><td><a class="wa" target="_blank" rel="noopener" href="'+waLink(b.tel,rem)+'" title="תזכורת בוואטסאפ">תזכורת</a></td>';
-  var dr=document.createElement('tr');dr.className='dr';dr.hidden=true;
-  dr.innerHTML='<td colspan="4"><div class="bk"><a class="rm" href="tel:'+h(b.tel)+'">'+h(b.tel)+'</a> · '+(b.from_price?'החל מ־':'')+b.price+' ₪'+(b.note?'<br><span style="color:var(--muted)">'+h(b.note)+'</span>':'')
-   +'<div class="acts"><button class="mv">שינוי</button><button class="cx warn">ביטול</button><button class="lc warn">ביטול בחיוב</button></div></div></td>';
-  tr.onclick=function(e){if(e.target.closest('a'))return;dr.hidden=!dr.hidden;tr.classList.toggle('open',!dr.hidden)};
-  var d=dr.querySelector('.bk'),cx=d.querySelector('.cx'),lc=d.querySelector('.lc');
-  function arm(btn,label,late){if(btn.dataset.a){A_('/api/admin/bookings/'+b.id+'/cancel',{body:{late:late}}).then(function(){$('am').textContent='התור בוטל והשעה התפנתה';loadB();week.load()});return}btn.dataset.a=1;btn.textContent='לחצי שוב לאישור';setTimeout(function(){delete btn.dataset.a;btn.textContent=label},5000)}
-  cx.onclick=function(){arm(cx,'ביטול',false)};lc.onclick=function(){arm(lc,'ביטול בחיוב',true)};
-  d.querySelector('.mv').onclick=function(){if(d.querySelector('.nd'))return;var f=document.createElement('div');f.innerHTML='<div class="row2"><input type="date" class="nd" value="'+b.date+'"><input type="time" class="nt" step="900" value="'+key(b.start)+'"></div><div class="acts"><button class="sv">שמירת השינוי</button><button class="cl">סגירה</button></div>';d.appendChild(f);
-   f.querySelector('.cl').onclick=function(){f.remove()};
-   f.querySelector('.sv').onclick=function(){var nd=f.querySelector('.nd').value,nt=f.querySelector('.nt').value.split(':');if(!nd||nt.length<2)return;A_('/api/admin/bookings/'+b.id+'/move',{body:{date:nd,start:+nt[0]*60+ +nt[1]}}).then(function(){$('am').textContent='התור עודכן. כדאי לעדכן את הלקוחה.';loadB();week.load()})}};
-  tb.appendChild(tr);tb.appendChild(dr)})})}
-function loadW(){A_('/api/admin/waitlist').then(function(j){var b=$('wlist');if(!b)return;$('wc').textContent=j.waitlist.length||'';b.innerHTML=j.waitlist.length?'':'<div class="hint">אין ממתינות</div>';
- j.waitlist.slice().sort(function(x,y){return x.date<y.date?-1:x.date>y.date?1:0}).forEach(function(x){var d=document.createElement('div');d.className='bk';d.innerHTML='<b>'+dmy(x.date)+'</b> · '+h(x.name)+'<br>'+h(x.tel)+'<br>'+h(x.services.join(', '))+'<div class="acts"><a target="_blank" rel="noopener" href="'+waLink(x.tel,'שלום '+x.name+', התפנה מקום ב־'+dmy(x.date)+'. מתאים לך לקבוע?')+'">הודעה שהתפנה מקום</a><button>הסרה</button></div>';
-  d.querySelector('button').onclick=function(){A_('/api/admin/waitlist/'+x.id,{method:'DELETE'}).then(loadW)};b.appendChild(d)})})}
-function loadVac(){A_('/api/admin/vacations').then(function(j){var b=$('vl');if(!b)return;b.innerHTML='';VAC=j.vacations;week.render();
- j.vacations.slice().sort(function(x,y){return x.from<y.from?-1:x.from>y.from?1:0}).forEach(function(v){var d=document.createElement('div');d.className='bk';d.innerHTML=dmy(v.from)+' עד '+dmy(v.to)+(v.note?' · '+h(v.note):'')+'<div class="acts"><button>הסרה</button></div>';d.querySelector('button').onclick=function(){A_('/api/admin/vacations/'+v.id,{method:'DELETE'}).then(loadVac)};b.appendChild(d)})})}
-function loadRev(){A_('/api/admin/reviews').then(function(j){var b=$('rp');if(!b)return;b.innerHTML='';var pend=j.reviews.filter(function(r){return!r.approved}).length;$('rc').textContent=pend?pend+' ממתינות':'';
- j.reviews.forEach(function(r){var d=document.createElement('div');d.className='bk';d.innerHTML=(r.approved?'':'<span class="tag bad">ממתינה לאישור</span><br>')+'<b>'+h(r.n)+'</b><br>'+h(r.t)+'<div class="acts">'+(r.approved?'':'<button class="ap">אישור ופרסום</button>')+'<button class="dl warn">מחיקה</button></div>';
-  var ap=d.querySelector('.ap');if(ap)ap.onclick=function(){A_('/api/admin/reviews/'+r.id+'/approve',{body:{}}).then(loadRev)};
-  d.querySelector('.dl').onclick=function(){if(confirm('למחוק את ההמלצה?'))A_('/api/admin/reviews/'+r.id,{method:'DELETE'}).then(loadRev)};b.appendChild(d)})})}
+function adminPanel(){
+ A.innerHTML='<div class="ah"><h2>ניהול הסטודיו</h2><div><a class="rm" href="#">לאתר</a> · <a class="rm" href="#admin" id="lo">יציאה</a></div></div>'
+ +'<nav class="atabs" id="atabs"><button type="button" data-t="cal" class="on">יומן</button><button type="button" data-t="wl">ממתינות <span class="cnt" id="wc"></span></button><button type="button" data-t="rv">המלצות <span class="cnt" id="rc"></span></button><button type="button" data-t="set">הגדרות</button></nav>'
+ +'<section data-p="cal"><div class="wbar"><button type="button" class="wb" id="wp" aria-label="שבוע קודם">›</button><b id="wl"></b><button type="button" class="wb" id="wn" aria-label="שבוע הבא">‹</button><button type="button" class="wt" id="wt">היום</button></div><div id="wg" class="wg"></div><p class="wsum" id="ws"></p><p class="whint">לחיצה על משבצת ריקה ביומן פותחת תור חדש בשעה הזו. לחיצה על תור פותחת את הפרטים.</p></section>'
+ +'<section data-p="wl" hidden><div id="wlist"></div></section>'
+ +'<section data-p="rv" hidden><div id="rp"></div><div class="acard"><h3>הוספת המלצה ידנית</h3><p class="sm">רק באישור הלקוחה</p><input id="rn" placeholder="שם הלקוחה"><textarea id="rt" placeholder="ההמלצה" style="margin-top:8px"></textarea><button type="button" class="btn" id="rs">הוספה</button></div></section>'
+ +'<section data-p="set" hidden><div class="acard"><h3>שעות עבודה</h3><p class="sm">השעה השנייה היא השעה האחרונה שאפשר להתחיל בה תור.</p><div id="hrs2"></div><button type="button" class="btn" id="hs">שמירת שעות</button></div>'
+ +'<div class="acard"><h3>חופשות וימים סגורים</h3><div class="row2"><label>מתאריך<input type="date" id="vf"></label><label>עד תאריך<input type="date" id="vt"></label></div><input id="vn" placeholder="הערה (לא חובה)" style="margin-top:8px"><button type="button" class="btn" id="vs">חסימת התאריכים</button><div id="vl"></div></div>'
+ +'<div class="acard"><h3>גלריה</h3><select id="gc">'+CATS.map(function(c){return'<option>'+c+'</option>'}).join('')+'</select><label class="btn" style="text-align:center;cursor:pointer;display:block">העלאת תמונות<input type="file" id="gf" accept="image/*" multiple hidden></label><p class="sm">למחיקה: לוחצים על תמונה, ואז לוחצים עליה שוב.</p><div class="gg" id="gg"></div></div></section>'
+ +'<button type="button" class="fab" id="fab"><span aria-hidden="true">+</span> תור חדש</button>'
+ +'<div class="sbg" id="sbg" hidden><div class="sheet" id="sh" role="dialog" aria-modal="true"></div></div><div class="toast" id="am" role="status" aria-live="polite"></div>';
+ $('lo').onclick=function(e){e.preventDefault();saveTok(null);adminLogin()};
+ $('atabs').onclick=function(e){var b=e.target.closest('button');if(b)tabGo(b.dataset.t)};
+ $('wp').onclick=function(){AW.ws=addd(AW.ws,-7);loadB()};$('wn').onclick=function(){AW.ws=addd(AW.ws,7);loadB()};$('wt').onclick=function(){AW.ws=sun(new Date());loadB()};
+ $('fab').onclick=function(){var t=iso(new Date()),ws=iso(AW.ws);openNew({date:t>=ws&&t<iso(addd(AW.ws,7))?t:ws})};
+ $('sbg').onclick=function(e){if(e.target===this)closeSheet()};
+ hoursUI();
+ $('vs').onclick=function(){var f=$('vf').value,t=$('vt').value||f;if(!f){msg('נא לבחור תאריך',true);return}
+  A_('/api/admin/vacations',{body:{from:f,to:t,note:$('vn').value}}).then(function(j){$('vf').value=$('vt').value=$('vn').value='';msg(j.existing_bookings?'נחסם. שימי לב: יש '+j.existing_bookings+' תורים קיימים בתאריכים האלה, הם לא בוטלו.':'התאריכים נחסמו',!!j.existing_bookings);loadVac();loadB()})};
+ $('rs').onclick=function(){var n=$('rn').value.trim(),t=$('rt').value.trim();if(!n||!t){msg('נא למלא שם והמלצה',true);return}A_('/api/admin/reviews',{body:{n:n,t:t}}).then(function(){$('rn').value=$('rt').value='';msg('ההמלצה נוספה');loadRev()})};
+ $('gf').onchange=function(){var fs=[].slice.call(this.files),cat=$('gc').value,inp=this,k=0,bad=0,why='';msg('מעלה '+fs.length+' תמונות…');
+  (function next(){if(k>=fs.length){inp.value='';msg(bad?(bad==fs.length?'התמונות לא עלו':(fs.length-bad)+' תמונות עלו, '+bad+' לא עלו')+(why?': '+why:''):'התמונות עלו',!!bad);loadGal();return}
+   var fd=new FormData();fd.append('cat',cat);fd.append('file',fs[k++]);A_('/api/admin/gallery',{body:fd,timeout:60000}).then(next,function(x){bad++;why=x.message;if(x.status!==401)next()})})()};
+ loadB();loadW();loadVac();loadRev();loadGal();clearInterval(aTimer);
+ aTimer=setInterval(function(){if(location.hash=='#admin'&&TOKEN&&!SHEET&&AW.tab=='cal')loadB()},60000)}
+
+function tabGo(t){AW.tab=t;A.querySelectorAll('#atabs button').forEach(function(b){b.classList.toggle('on',b.dataset.t==t)});A.querySelectorAll('section[data-p]').forEach(function(s){s.hidden=s.dataset.p!=t});$('fab').hidden=t!='cal'&&t!='wl';scrollTo(0,0)}
+
+function hoursUI(){var op='';for(var x=6;x<=22;x++)op+='<option value="'+x+'">'+x+':00</option>';var hs='';
+ for(var i=0;i<7;i++)hs+='<div class="hr2"><span>'+DN[i]+'</span><select data-i="'+i+'" data-k="o" aria-label="פתיחה ביום '+DN[i]+'"><option value="">סגור</option>'+op+'</select><span>עד</span><select data-i="'+i+'" data-k="c" aria-label="תור אחרון ביום '+DN[i]+'"><option value="">-</option>'+op+'</select></div>';
+ $('hrs2').innerHTML=hs;
+ function fillH(){A.querySelectorAll('select[data-i]').forEach(function(s){var v=HOURS[s.dataset.i];s.value=v?v[s.dataset.k=='o'?0:1]:''})}
+ // השעות נטענות מהשרת לפני שאפשר לשמור, אחרת שמירה דורסת את השעות האמיתיות בשעות ברירת המחדל
+ fillH();$('hs').disabled=true;api('/api/public').then(function(j){HOURS=j.hours;fillH();if($('hs'))$('hs').disabled=false;renderWeek()},function(){msg('לא ניתן לטעון את שעות העבודה כרגע',true)});
+ $('hs').onclick=function(){var o={};A.querySelectorAll('select[data-k=o]').forEach(function(s){var i=s.dataset.i,c=A.querySelector('select[data-k=c][data-i="'+i+'"]').value;if(s.value&&c&&+c>+s.value)o[i]=[+s.value,+c]});
+  A_('/api/admin/hours',{method:'PUT',body:{h:o}}).then(function(j){HOURS=j.hours;info();renderWeek();msg('השעות נשמרו')})}}
+
+// ---------- היומן השבועי
+function loadB(){var ws=iso(AW.ws);A_('/api/admin/bookings?start='+ws+'&days=7').then(function(j){if(ws!=iso(AW.ws))return;AW.list=j.bookings;AW.today=j.today||iso(new Date());renderWeek()})}
+function vacOn(ds){return VAC.filter(function(v){return ds>=v.from&&ds<=v.to})[0]}
+function renderWeek(){var g=$('wg');if(!g)return;
+ var days=[];for(var i=0;i<7;i++){var d=addd(AW.ws,i),ds=iso(d),bs=AW.list.filter(function(b){return b.date==ds});if(i<6||HOURS[6]||bs.length)days.push({d:d,ds:ds,hr:HOURS[d.getDay()],bs:bs,vac:vacOn(ds)})}
+ var lo=24,hi=0;days.forEach(function(x){if(x.hr){lo=Math.min(lo,x.hr[0]);hi=Math.max(hi,x.hr[1]+1)}x.bs.forEach(function(b){lo=Math.min(lo,Math.floor(b.start/60));hi=Math.max(hi,Math.ceil((b.start+b.dur)/60))})});
+ if(lo>=hi){lo=8;hi=18}hi=Math.min(24,hi);
+ var PH=innerWidth>=700?64:54,H=(hi-lo)*PH,y=function(m){return(m-lo*60)/60*PH},cols='grid-template-columns:40px repeat('+days.length+',minmax(0,1fr))';
+ var e1=days[0].d,e2=days[days.length-1].d;$('wl').textContent=e1.getDate()+(e1.getMonth()!=e2.getMonth()?' '+MN[e1.getMonth()]:'')+'–'+e2.getDate()+' '+MN[e2.getMonth()];
+ var head='<div class="wh" style="'+cols+'"><span></span>'+days.map(function(x){return'<div class="'+(x.ds==AW.today?'td':'')+'"><b>'+DN[x.d.getDay()]+'</b><span>'+x.d.getDate()+'/'+(x.d.getMonth()+1)+'</span><small>'+(x.bs.length?x.bs.length+(x.bs.length==1?' תור':' תורים'):'&nbsp;')+'</small></div>'}).join('')+'</div>';
+ var tl='<div class="wtimes" style="height:'+H+'px">';for(var hh=lo;hh<hi;hh++)tl+='<span style="top:'+(hh-lo)*PH+'px">'+('0'+hh).slice(-2)+':00</span>';tl+='</div>';
+ var now=new Date(),nm=now.getHours()*60+now.getMinutes();
+ var body=days.map(function(x){var s='<div class="wcol'+(x.ds==AW.today?' td':'')+(x.ds<AW.today?' past':'')+'" data-d="'+x.ds+'" style="height:'+H+'px;background-size:100% '+PH+'px">';
+  if(x.vac||!x.hr)s+='<div class="off" style="top:0;height:'+H+'px"><span>'+(x.vac?(x.vac.note?h(x.vac.note):'חופש'):'סגור')+'</span></div>';
+  else{if(x.hr[0]>lo)s+='<div class="off" style="top:0;height:'+y(x.hr[0]*60)+'px"></div>';if(x.hr[1]+1<=hi)s+='<div class="off" style="top:'+y(x.hr[1]*60+15)+'px;height:'+(H-y(x.hr[1]*60+15))+'px"></div>'}
+  if(x.ds==AW.today&&nm>lo*60&&nm<hi*60)s+='<div class="nowl" style="top:'+y(nm)+'px"></div>';
+  x.bs.forEach(function(b){var ht=Math.max(b.dur/60*PH-2,22);s+='<button type="button" class="ev'+(ht<40?' sm':'')+'" data-id="'+b.id+'" style="top:'+(y(b.start)+1)+'px;height:'+ht+'px"><b>'+h(b.name)+'</b><span>'+key(b.start)+'</span></button>'});
+  return s+'</div>'}).join('');
+ g.innerHTML=head+'<div class="wb2" style="'+cols+'">'+tl+body+'</div>';
+ g.querySelectorAll('.wcol').forEach(function(c){c.onclick=function(e){var ev=e.target.closest('.ev');if(ev){openBk(AW.list.filter(function(b){return b.id==ev.dataset.id})[0]);return}
+  var r=c.getBoundingClientRect(),m=lo*60+Math.floor((e.clientY-r.top)/PH*4)*15;openNew({date:c.dataset.d,start:m})}});
+ var tw=AW.list.length,tdn=AW.list.filter(function(b){return b.date==AW.today}).length,sum=AW.list.reduce(function(a,b){return a+b.price},0);
+ $('ws').textContent=tw?tw+(tw==1?' תור':' תורים')+' בשבוע הזה'+(tdn?' · '+tdn+' היום':'')+' · '+sum.toLocaleString('he-IL')+' ₪':'אין תורים בשבוע הזה'}
+addEventListener('resize',function(){if(location.hash=='#admin'&&$('wg'))renderWeek()});
+
+// ---------- חלונית (פרטי תור / תור חדש)
+function openSheet(html){SHEET=1;$('sh').innerHTML=html;$('sbg').hidden=false;document.body.classList.add('noscr');var f=$('sh').querySelector('.x');if(f)f.onclick=closeSheet;setTimeout(function(){var t=$('sh').querySelector('h3');if(t){t.tabIndex=-1;t.focus()}},50)}
+function closeSheet(){SHEET=null;$('sbg').hidden=true;$('sh').innerHTML='';document.body.classList.remove('noscr')}
+addEventListener('keydown',function(e){if(e.key=='Escape'&&SHEET)closeSheet()});
+function openBk(b){if(!b)return;
+ openSheet('<div class="shh"><h3>'+h(b.name)+'</h3><button type="button" class="x" aria-label="סגירה">✕</button></div>'
+  +'<p class="big">'+dayName(b.date)+' · '+key(b.start)+'–'+key(b.start+b.dur)+'</p><p>'+h(b.services.join(', '))+' · '+(b.from_price?'החל מ־':'')+b.price+' ₪</p>'+(b.note?'<p class="note">'+h(b.note)+'</p>':'')
+  +'<p><a class="rm" href="tel:'+h(b.tel)+'">'+h(b.tel)+'</a></p>'
+  +'<div class="sact"><a class="sb wa" target="_blank" rel="noopener" href="'+waLink(b.tel,remindText(b))+'">תזכורת בוואטסאפ</a><a class="sb" href="tel:'+h(b.tel)+'">חיוג</a><button type="button" class="sb" id="bmv">הזזה</button><button type="button" class="sb warn" id="bcx">ביטול</button><button type="button" class="sb warn" id="blc">ביטול בחיוב</button></div><div id="mvb"></div>');
+ function arm(btn,label,late){if(btn.dataset.a){btn.disabled=true;A_('/api/admin/bookings/'+b.id+'/cancel',{body:{late:late}}).then(function(){closeSheet();msg('התור בוטל והשעה התפנתה');loadB();week.load()},function(){btn.disabled=false});return}
+  btn.dataset.a=1;btn.textContent='לחצי שוב לאישור';setTimeout(function(){delete btn.dataset.a;btn.textContent=label},5000)}
+ $('bcx').onclick=function(){arm(this,'ביטול',false)};$('blc').onclick=function(){arm(this,'ביטול בחיוב',true)};
+ $('bmv').onclick=function(){var m=$('mvb');if(m.innerHTML)return;m.innerHTML='<div class="row2"><label>תאריך<input type="date" id="nd" value="'+b.date+'"></label><label>שעה<input type="time" id="nt" step="300" value="'+key(b.start)+'"></label></div><button type="button" class="btn" id="nsv">שמירת השינוי</button>';
+  $('nsv').onclick=function(){var nd=$('nd').value,nt=$('nt').value.split(':');if(!nd||nt.length<2){msg('נא לבחור תאריך ושעה',true);return}var me=this;me.disabled=true;var st=+nt[0]*60+ +nt[1];
+   A_('/api/admin/bookings/'+b.id+'/move',{body:{date:nd,start:st}}).then(function(){var nb=Object.assign({},b,{date:nd,start:st});
+    $('mvb').innerHTML='<p class="ok2">התור הוזז ל'+dayName(nd)+' בשעה '+key(st)+'.</p><a class="sb wa" style="display:flex" target="_blank" rel="noopener" href="'+waLink(b.tel,'שלום '+b.name+', התור שלך ב-Nail Studio by Opal Ben Moha הועבר ל'+dayName(nd)+' בשעה '+key(st)+'. מחכים לך!')+'">עדכון הלקוחה בוואטסאפ</a>';loadB();week.load()},function(){me.disabled=false})}}}
+
+function openNew(o){o=o||{};var sel={};(o.ids||[]).forEach(function(i){sel[i]=1});
+ openSheet('<div class="shh"><h3>תור חדש</h3><button type="button" class="x" aria-label="סגירה">✕</button></div>'
+  +'<label>טלפון<input type="tel" id="ntel" inputmode="tel" autocomplete="off" value="'+h(o.tel||'')+'"></label><div id="nsug"></div>'
+  +'<label>שם<input type="text" id="nname" autocomplete="off" value="'+h(o.name||'')+'"></label>'
+  +'<div class="lbl">טיפולים</div><div class="chips" id="nsv">'+SV.map(function(s){return'<button type="button" data-id="'+s.id+'" class="'+(sel[s.id]?'on':'')+'" aria-pressed="'+(sel[s.id]?'true':'false')+'">'+h(s.n)+'</button>'}).join('')+'</div>'
+  +'<div class="row2"><label>תאריך<input type="date" id="ndt" value="'+(o.date||iso(new Date()))+'"></label><label>שעה<input type="time" id="ntm" step="300" value="'+(o.start!=null?key(o.start):'')+'"></label></div>'
+  +'<label>הערה (לא חובה)<input type="text" id="nnote" maxlength="400"></label><p class="nsum" id="nsum"></p><button type="button" class="btn" id="nsave">שמירת התור</button>');
+ var chips=$('nsv');
+ function upd(){var ids=Object.keys(sel),d=0,p=0,f=0;SV.forEach(function(s){if(sel[s.id]){d+=s.d;p+=s.p;if(s.f)f=1}});var t=$('ntm').value.split(':'),ds=$('ndt').value,out='';
+  if(d){out='משך '+fmt(d)+' · '+(f?'החל מ־':'')+p+' ₪';if(t.length==2){var st=+t[0]*60+ +t[1];out+=' · עד '+key(st+d);var hr=ds&&HOURS[new Date(ds+'T00:00:00').getDay()];if(!hr||st<hr[0]*60||st>hr[1]*60||vacOn(ds))out+=' · שימי לב: מחוץ לשעות הפעילות';
+   var clash=AW.list.filter(function(b){return b.date==ds&&st<b.start+b.dur&&b.start<st+d})[0];if(clash)out+=' · חופף לתור של '+clash.name}}
+  $('nsum').textContent=out}
+ chips.onclick=function(e){var b=e.target.closest('button');if(!b)return;var on=!sel[b.dataset.id];if(on)sel[b.dataset.id]=1;else delete sel[b.dataset.id];b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);upd()};
+ $('ntm').oninput=$('ndt').oninput=upd;$('ntm').onchange=$('ndt').onchange=upd;upd();
+ var qt=null;$('ntel').oninput=function(){clearTimeout(qt);var v=this.value;qt=setTimeout(function(){if(v.replace(/\D/g,'').length<3){$('nsug').innerHTML='';return}
+  A_('/api/admin/customers?q='+encodeURIComponent(v)).then(function(j){var s=$('nsug');if(!s)return;s.innerHTML='';j.customers.forEach(function(c){var b=document.createElement('button');b.type='button';b.className='sug';
+   b.innerHTML='<b>'+h(c.name)+' · '+h(c.tel)+'</b><span>'+c.n+(c.n==1?' ביקור':' ביקורים')+' · אחרון '+dmy(c.last)+': '+h(c.services.join(', '))+'</span>';
+   b.onclick=function(){$('ntel').value=c.tel;$('nname').value=c.name;s.innerHTML=''};s.appendChild(b)})},function(){})},300)};
+ $('nsave').onclick=function(){var me=this,ids=Object.keys(sel),tel=$('ntel').value.trim(),nm=$('nname').value.trim(),ds=$('ndt').value,t=$('ntm').value.split(':');
+  if(!tel||!telOk(tel)){msg('נא להזין מספר טלפון תקין',true);$('ntel').focus();return}
+  if(!nm){msg('נא למלא שם',true);$('nname').focus();return}
+  if(!ids.length){msg('נא לבחור לפחות טיפול אחד',true);return}
+  if(!ds||t.length<2){msg('נא לבחור תאריך ושעה',true);return}
+  me.disabled=true;me.textContent='שומרת…';
+  A_('/api/admin/bookings',{body:{name:nm,tel:tel,services:SV.filter(function(s){return sel[s.id]}).map(function(s){return s.id}),date:ds,start:+t[0]*60+ +t[1],note:$('nnote').value.trim()}}).then(function(b){
+   if(o.wid)A_('/api/admin/waitlist/'+o.wid,{method:'DELETE'}).then(loadW,function(){});
+   openSheet('<div class="shh"><h3>התור נשמר</h3><button type="button" class="x" aria-label="סגירה">✕</button></div><p class="big">'+h(b.name)+' · '+dayName(b.date)+' בשעה '+key(b.start)+'</p><p>'+h(b.services.join(', '))+' · '+(b.from_price?'החל מ־':'')+b.price+' ₪</p>'
+    +'<a class="sb wa" style="display:flex;margin-top:14px" target="_blank" rel="noopener" href="'+waLink(b.tel,confirmText(b))+'">שליחת אישור ללקוחה בוואטסאפ</a><button type="button" class="btn o" id="dn">סגירה</button>');
+   $('dn').onclick=closeSheet;AW.ws=sun(new Date(b.date+'T00:00:00'));loadB();week.load()},function(){me.disabled=false;me.textContent='שמירת התור'})}}
+
+// ---------- ממתינות, חופשות, המלצות, גלריה
+function loadW(){A_('/api/admin/waitlist').then(function(j){var b=$('wlist');if(!b)return;$('wc').textContent=j.waitlist.length||'';b.innerHTML=j.waitlist.length?'':'<div class="acard"><p class="sm" style="margin:0">אין כרגע לקוחות ברשימת ההמתנה.</p></div>';
+ j.waitlist.slice().sort(function(x,y){return x.date<y.date?-1:x.date>y.date?1:0}).forEach(function(x){var d=document.createElement('div');d.className='acard';
+  d.innerHTML='<h3>'+h(x.name)+'</h3><p class="big">מחכה למקום ב'+dayName(x.date)+'</p><p>'+(x.services.length?h(x.services.join(', '))+' · ':'')+'<a class="rm" href="tel:'+h(x.tel)+'">'+h(x.tel)+'</a></p><div class="sact"><a class="sb wa" target="_blank" rel="noopener" href="'+waLink(x.tel,'שלום '+x.name+', התפנה מקום ב'+dayName(x.date)+'. מתאים לך לקבוע?')+'">הודעה שהתפנה מקום</a><button type="button" class="sb bk1">קביעת תור</button><button type="button" class="sb warn rm1">הסרה</button></div>';
+  d.querySelector('.bk1').onclick=function(){openNew({tel:x.tel,name:x.name,date:x.date,wid:x.id,ids:SV.filter(function(s){return x.services.indexOf(s.n)>=0}).map(function(s){return s.id})})};
+  d.querySelector('.rm1').onclick=function(){A_('/api/admin/waitlist/'+x.id,{method:'DELETE'}).then(function(){msg('הוסרה מרשימת ההמתנה');loadW()})};b.appendChild(d)})})}
+function loadVac(){A_('/api/admin/vacations').then(function(j){VAC=j.vacations;week.render();renderWeek();var b=$('vl');if(!b)return;b.innerHTML='';
+ j.vacations.slice().sort(function(x,y){return x.from<y.from?-1:x.from>y.from?1:0}).forEach(function(v){var d=document.createElement('div');d.className='vrow';d.innerHTML='<span>'+dmy(v.from)+(v.to!=v.from?' עד '+dmy(v.to):'')+(v.note?' · '+h(v.note):'')+'</span><button type="button" class="sb warn">הסרה</button>';d.querySelector('button').onclick=function(){A_('/api/admin/vacations/'+v.id,{method:'DELETE'}).then(function(){msg('החסימה הוסרה');loadVac()})};b.appendChild(d)})})}
+function loadRev(){A_('/api/admin/reviews').then(function(j){var b=$('rp');if(!b)return;b.innerHTML='';var pend=j.reviews.filter(function(r){return!r.approved}).length;$('rc').textContent=pend||'';
+ j.reviews.forEach(function(r){var d=document.createElement('div');d.className='acard';d.innerHTML=(r.approved?'':'<span class="tag bad">ממתינה לאישור</span>')+'<h3>'+h(r.n)+'</h3><p>'+h(r.t)+'</p><div class="sact">'+(r.approved?'':'<button type="button" class="sb ap">אישור ופרסום</button>')+'<button type="button" class="sb warn dl">מחיקה</button></div>';
+  var ap=d.querySelector('.ap');if(ap)ap.onclick=function(){A_('/api/admin/reviews/'+r.id+'/approve',{body:{}}).then(function(){msg('ההמלצה פורסמה באתר');loadRev()})};
+  var dl=d.querySelector('.dl');dl.onclick=function(){if(dl.dataset.a){A_('/api/admin/reviews/'+r.id,{method:'DELETE'}).then(function(){msg('ההמלצה נמחקה');loadRev()});return}dl.dataset.a=1;dl.textContent='לחצי שוב למחיקה';setTimeout(function(){delete dl.dataset.a;dl.textContent='מחיקה'},5000)};b.appendChild(d)});
+ if(!j.reviews.length)b.innerHTML='<div class="acard"><p class="sm" style="margin:0">אין עדיין המלצות.</p></div>'})}
 function loadGal(){api('/api/public').then(function(j){GAL=j.gallery;galShow();var g=$('gg');if(!g)return;g.innerHTML='';
  GAL.forEach(function(it){var im=document.createElement('img');im.src=API+'/api/gallery/'+it.id;im.alt=it.cat;im.title=it.cat;
-  im.onclick=function(){if(!im.classList.contains('arm')){im.classList.add('arm');setTimeout(function(){im.classList.remove('arm')},4000);return}A_('/api/admin/gallery/'+it.id,{method:'DELETE'}).then(loadGal)};g.appendChild(im)})})}
+  im.onclick=function(){if(!im.classList.contains('arm')){im.classList.add('arm');msg('לחצי שוב על התמונה כדי למחוק אותה');setTimeout(function(){im.classList.remove('arm')},4000);return}A_('/api/admin/gallery/'+it.id,{method:'DELETE'}).then(function(){msg('התמונה נמחקה');loadGal()})};g.appendChild(im)})})}
+
 tmode();
 </script>
 </body>
