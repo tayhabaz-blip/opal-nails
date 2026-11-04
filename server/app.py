@@ -43,7 +43,7 @@ STUDIO = "Nail Studio by Opal Ben Moha"
 ADDRESS = "אהרון בן יוסף 27, רמלה"
 SITE_URL = os.environ.get("SITE_URL", "https://opal-nails.onrender.com").rstrip("/")
 
-STEP = 15          # slot grid, minutes
+STEP = 30          # slot grid for online bookings, minutes
 MAX_DAYS_AHEAD = 365
 TOKEN_DAYS = 30
 
